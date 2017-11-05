@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import spotsyThumbnail from '../images/projects/spotsy.png'
 import zoomdataThumbnail from '../images/projects/zoomdata-logo.png'
@@ -29,13 +29,18 @@ const Link = styled.a`
   display: block;
 `
 
-const Thumbnail = styled.img`
+const Thumbnail = styled.div`
   width: 235px;
   height: 176px;
   margin-bottom: 0;
   background-color: #e1e4e9;
   background-position: center;
   background-repeat: no-repeat;
+  ${props =>
+    props.url &&
+    css`
+      background-image: url(${props.url});
+    `};
 `
 
 const Name = styled.h2`
@@ -130,7 +135,7 @@ export default class Projects extends React.Component {
           return (
             <Item key={project.name}>
               <Link href={project.link} target="_blank">
-                <Thumbnail src={project.thumbnail} />
+                <Thumbnail url={project.thumbnail} />
                 <Name>{project.name}</Name>
               </Link>
               <Type>{project.type}</Type>
