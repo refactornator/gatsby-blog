@@ -5,6 +5,8 @@ import Helmet from 'react-helmet'
 
 import { rhythm } from '../utils/typography'
 
+import '../utils/header'
+
 class BlogIndex extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
