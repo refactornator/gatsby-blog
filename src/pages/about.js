@@ -3,7 +3,7 @@ import React from 'react'
 import face from '../images/face.jpg'
 import { rhythm } from '../utils/typography'
 
-class About extends React.Component {
+export default class About extends React.Component {
   render() {
     return (
       <div
