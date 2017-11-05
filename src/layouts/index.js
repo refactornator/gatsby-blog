@@ -17,6 +17,7 @@ const Main = styled.main`
 `
 
 const Content = styled.section`
+  width: 100%;
   flex: 1 0 auto;
   margin: 0 auto;
   max-width: ${rhythm(30)};
