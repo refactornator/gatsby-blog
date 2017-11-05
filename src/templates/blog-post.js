@@ -5,12 +5,20 @@ import styled from 'styled-components'
 
 import { rhythm, scale } from '../utils/typography'
 
+const Title = styled.h1`
+  color: black;
+`
+
 const Date = styled.p`
   font-size: ${scale(-1 / 5).fontSize};
   line-height: ${scale(-1 / 5).lineHeight};
   display: block;
   margin-bottom: ${rhythm(1)};
   margin-top: ${rhythm(-1)};
+`
+
+const Content = styled.div`
+  color: black;
 `
 
 class BlogPostTemplate extends React.Component {
@@ -21,9 +29,9 @@ class BlogPostTemplate extends React.Component {
     return (
       <div>
         <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
-        <h1>{post.frontmatter.title}</h1>
+        <Title>{post.frontmatter.title}</Title>
         <Date>{post.frontmatter.date}</Date>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <Content dangerouslySetInnerHTML={{ __html: post.html }} />
       </div>
     )
   }
