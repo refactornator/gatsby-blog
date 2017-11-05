@@ -1,15 +1,28 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import styled from 'styled-components'
+import styled, { injectGlobal } from 'styled-components'
 
-import { rhythm, scale } from '../utils/typography'
+import { rhythm } from '../utils/typography'
 
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
-const Main = styled.main``
+injectGlobal`
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+`
+
+const Main = styled.main`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+`
 
 const Content = styled.section`
+  flex: 1 0 auto;
   margin: 0 auto;
   max-width: ${rhythm(24)};
   padding: ${rhythm(1.5)} ${rhythm(3 / 4)};
@@ -22,10 +35,8 @@ class Template extends React.Component {
     return (
       <Main>
         <Header />
-        <Content>
-          {children()}
-          <Footer />
-        </Content>
+        <Content>{children()}</Content>
+        <Footer />
       </Main>
     )
   }

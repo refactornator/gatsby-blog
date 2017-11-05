@@ -5,17 +5,16 @@ import { colors } from '../utils/styles'
 import { rhythm } from '../utils/typography'
 
 const Footer = styled.footer`
-  height: 60px;
-  width: 100%;
-  font-size: 80%;
   color: #666;
-  background-color: white;
-  margin-top: ${rhythm(2.5)};
-  overflow: hidden;
-  text-transform: uppercase;
+  width: 860px;
+  height: 60px;
   display: flex;
-  justify-content: space-between;
   margin: 0 auto;
+  font-size: 80%;
+  overflow: hidden;
+  background-color: white;
+  text-transform: uppercase;
+  justify-content: space-between;
   border-top: 1px solid ${colors.store};
 `
 
