@@ -6,7 +6,7 @@ import { rhythm } from '../utils/typography'
 
 const Footer = styled.footer`
   color: #666;
-  width: 860px;
+  max-width: 860px;
   height: 60px;
   display: flex;
   margin: 0 auto;
