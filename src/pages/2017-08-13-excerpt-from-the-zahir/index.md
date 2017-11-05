@@ -4,7 +4,7 @@ date: "2017-08-13T00:00:00.000Z"
 path: "/an-excerpt-from-the-zahir/"
 ---
 
-I recently read the book [The Zahir](https://www.amazon.com/Zahir-Novel-Obsession-Paulo-Coelho/dp/0060832819/ref=pd_sbs_14_1?_encoding=UTF8&pd_rd_i=0060832819&pd_rd_r=0Z65F0F7C7N9RXXR06CP&pd_rd_w=7fKft&pd_rd_wg=K9qSH&psc=1&refRID=0Z65F0F7C7N9RXXR06CP){:target="_blank"}. I wouldn't say it was my favorite book, but I liked it, and a few things stood out to me. Particularly this excerpt. It's from the climax of the book. The narrator realizes what he's been chasing his whole life and how an obsession has kept him from making choices for himself.
+I recently read the book [The Zahir](https://www.amazon.com/Zahir-Novel-Obsession-Paulo-Coelho/dp/0060832819/ref=pd_sbs_14_1?_encoding=UTF8&pd_rd_i=0060832819&pd_rd_r=0Z65F0F7C7N9RXXR06CP&pd_rd_w=7fKft&pd_rd_wg=K9qSH&psc=1&refRID=0Z65F0F7C7N9RXXR06CP). I wouldn't say it was my favorite book, but I liked it, and a few things stood out to me. Particularly this excerpt. It's from the climax of the book. The narrator realizes what he's been chasing his whole life and how an obsession has kept him from making choices for himself.
 
 >The Zahir?
 >
