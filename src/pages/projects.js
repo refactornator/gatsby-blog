@@ -9,20 +9,21 @@ import yeomanThumbnail from '../images/projects/yeoman-gateway.png'
 import addRemoveThumbnail from '../images/projects/add-remove.png'
 import sevenCornersThumbnail from '../images/projects/7corners.png'
 
+const columnWidth = 235
+
 const Grid = styled.div`
-  width: 100%;
-  height: 1254px;
-  display: flex;
-  flex-flow: column wrap; /* Shorthand – you could use ‘flex-direction: column’ and ‘flex-wrap: wrap’ instead */
-  justify-content: flex-start;
-  align-items: flex-start;
+  column-width: ${columnWidth}px;
+  column-gap: 15px;
 `
 
 const Item = styled.div`
   background-color: #f3f5f8;
   color: #7f8389;
-  width: 235px;
+  width: ${columnWidth}px;
   margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  column-break-inside: avoid;
 `
 
 const Link = styled.a`
@@ -30,7 +31,7 @@ const Link = styled.a`
 `
 
 const Thumbnail = styled.div`
-  width: 235px;
+  width: ${columnWidth}px;
   height: 176px;
   margin-bottom: 0;
   background-color: #e1e4e9;
