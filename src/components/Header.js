@@ -111,15 +111,23 @@ const Background = styled.header`
 `
 
 const Links = styled.div`
-  background-color: #f3f5f8;
-  display: inline-block;
   z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
 `
 
 const linkStyle = {
   color: '#aaa',
-  marginLeft: '2em',
-  fontStyle: 'italic',
+  width: '26%',
+  maxWidth: '200px',
+  height: '100%',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
 }
 
 const Image = styled.img`
@@ -141,13 +149,19 @@ export default class Header extends React.Component {
     return (
       <Background onMouseEnter={startAnimation} onMouseLeave={stopAnimation}>
         <Links>
-          <Link style={linkStyle} to={'/about/'}>
+          <Link
+            style={{ ...linkStyle, justifyContent: 'flex-end' }}
+            to={'/about/'}
+          >
             About
           </Link>
           <Link style={linkStyle} to={'/'}>
             <Image src={logo} />
           </Link>
-          <Link style={linkStyle} to={'/projects/'}>
+          <Link
+            style={{ ...linkStyle, justifyContent: 'flex-start' }}
+            to={'/projects/'}
+          >
             Projects
           </Link>
         </Links>
