@@ -15,8 +15,7 @@ const PostList = styled.ul`
 
 const PostItem = styled.li`
   line-height: normal;
-  margin-left: 20px;
-  margin-bottom: 40px;
+  margin: 0 20px 40px 0;
 `
 
 const Title = styled.h3`
