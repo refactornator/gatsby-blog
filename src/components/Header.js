@@ -13,7 +13,6 @@ import logo from '../images/wl3_logo.png'
 
 const Background = styled.header`
   height: 120px;
-  width: 100%;
   background: #f3f5f8;
   position: relative;
   transform-style: preserve-3d;
