@@ -1,6 +1,10 @@
 import Typography from 'typography'
 import funstonTheme from 'typography-theme-funston'
 
+funstonTheme.googleFonts = []
+funstonTheme.bodyFontFamily = ['Ubuntu', 'sans-serif']
+funstonTheme.headerFontFamily = ['Ubuntu', 'sans-serif']
+
 const typography = new Typography(funstonTheme)
 
 // Hot reload typography in development.

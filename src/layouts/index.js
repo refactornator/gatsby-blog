@@ -8,11 +8,6 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 
 injectGlobal`
-  html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-  }
 `
 
 const Main = styled.main`

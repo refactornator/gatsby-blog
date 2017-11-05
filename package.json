@@ -6,6 +6,7 @@
     "gatsby": "^1.9.99",
     "gatsby-link": "^1.6.24",
     "gatsby-plugin-google-analytics": "^1.0.11",
+    "gatsby-plugin-google-fonts": "^0.0.3",
     "gatsby-plugin-offline": "^1.0.10",
     "gatsby-plugin-react-helmet": "^1.0.8",
     "gatsby-plugin-sharp": "^1.6.19",
