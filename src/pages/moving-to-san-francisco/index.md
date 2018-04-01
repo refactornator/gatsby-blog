@@ -1,7 +1,6 @@
 ---
 title: Moving to San Francisco
 date: "2014-06-22T00:00:00.000Z"
-path: "/moving-to-san-francisco/"
 ---
 
 I recently moved to San Francisco after living in the D.C. area for 5 years. To say this is something I've wanted to do for a while would be an understatement.

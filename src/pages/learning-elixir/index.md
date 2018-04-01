@@ -1,7 +1,6 @@
 ---
 title: Learning Elixir
 date: "2017-04-07T00:00:00.000Z"
-path: "/learning-elixir/"
 ---
 
 I have a project at Pivotal Labs next week that will require me to know Elixir. I'm starting from ground zero. Elixir is a totally new language for me. I've decided to chronologue my adventures in learning Elixir for the first time. This isn't an Elixir tutorial as much as a meta-tutorial. This is the process I used to learn Elixir.

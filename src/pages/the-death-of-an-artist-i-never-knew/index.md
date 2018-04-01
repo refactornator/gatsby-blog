@@ -1,7 +1,6 @@
 ---
 title: The Death of an Artist I Never Knew
 date: "2016-01-15T00:00:00.000Z"
-path: "/the-death-of-an-artist-i-never-knew/"
 ---
 
 I recently learned of the death of the artist Stuart Jackson. It was covered on [news sites](http://www.ktvu.com/news/68835025-story) and [SF blogs](http://hoodline.com/2015/12/popular-north-beach-sketch-artist-dies-after-brutal-unprovoked-attack). The only reason I know of Stuart is because of this picture he sketched of my friends and I enjoying a beer at Vesuvio.

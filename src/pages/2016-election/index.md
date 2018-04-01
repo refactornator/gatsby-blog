@@ -1,7 +1,6 @@
 ---
 title: My Thoughts on the 2016 Election
 date: "2016-08-21T00:00:00.000Z"
-path: "/my-thoughts-on-the-2016-election/"
 ---
 
 These are just a few of my thoughts on the 2016 US Election, and who I plan to vote for and why.

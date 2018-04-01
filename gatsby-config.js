@@ -2,6 +2,8 @@ module.exports = {
   siteMetadata: {
     title: "William Lindner, 2 n's",
     author: 'William Lindner',
+    description: 'My personal blog.',
+    siteUrl: 'https://wl3.me/',
   },
   plugins: [
     {

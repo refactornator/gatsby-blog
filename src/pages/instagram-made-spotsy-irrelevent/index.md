@@ -1,7 +1,6 @@
 ---
 title: Instagram Made My App, Spotsy, Irrelevent
 date: "2015-08-29T00:00:00.000Z"
-path: "/instagram-made-spoty-irrelevent/"
 ---
 
 When I created Spotsy in 2013, I always knew it might get replaced with similar functionality in Instagram's own app. Spotsy is an iPhone app [Alex Sailer](https://twitter.com/alexsailer) and I created for location search on Instagram. It started out as Instanear and initially only showed photos tagged close by. After user research, we added functionality for popular locations, searching anywhere in the world, and saving your favorite spots. Recently though, Instagram added most of this same functionality to their own app. Making Spotsy irrelevent.*\**

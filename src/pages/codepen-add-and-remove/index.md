@@ -1,7 +1,6 @@
 ---
 title: Codepen - Add and Remove
 date: "2014-07-19T00:00:00.000Z"
-path: "/codepen-add-and-remove/"
 ---
 
 I was browsing Dribbble the other day and ran across this cool animation created by Dribbble user [Toxinboy](https://dribbble.com/Toxinboy).

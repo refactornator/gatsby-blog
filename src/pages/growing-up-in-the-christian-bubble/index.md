@@ -1,7 +1,6 @@
 ---
 title: Growing Up in the Christian Bubble
 date: "2016-07-28T00:00:00.000Z"
-path: "/growing-up-in-the-christian-bubble/"
 ---
 
 Christianity has always been a part of my life. My father's a pastor, and I became a christian at the age of 3. I don't remember it. It wasn't until I was about 16 that I started to make my own decisions about my beliefs and found atheism.

@@ -1,7 +1,6 @@
 ---
 title: Putting React in your React Native Webview So You Can React While You React
 date: "2015-05-01T00:00:00.000Z"
-path: "/react-in-your-react-native-webview/"
 ---
 
 React Native is great. Or, at least, it promises to be great. It was just released, so time will tell how well it works out. But, for a project that's only been out for a few months, it's already made a huge splash. If you haven't heard of it, [check it out](https://facebook.github.io/react-native/). It could be a good solution for building your next cross platform native app. It allows you to write your app in React's Component structure, but instead of rendering DOM elements, it renders iOS (and eventually Android) native elements. Instead of ```<div>```'s and ```<span>```'s, you're writing ```<View>``` and ```<Text>``` elements. But, that's not really what this article is about. For getting started with React Native, I suggest React Native's [Getting Started Guide](http://facebook.github.io/react-native/docs/getting-started.html#content).
