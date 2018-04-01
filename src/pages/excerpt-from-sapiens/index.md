@@ -1,7 +1,6 @@
 ---
 title: An Excerpt from Sapiens
 date: "2016-11-10T00:00:00.000Z"
-path: "/excerpt-from-sapiens/"
 ---
 
 I recently read the book [Sapiens: A Brief History of Mankind](https://read.amazon.com/kp/embed?asin=B00ICN066A&preview=newtab&linkCode=kpe&ref_=cm_sw_r_kb_dp_mGftybS79880R&tag=williamlindne-20) and I found it really enjoyable. It delves into how we, as humans, got here. One excerpt really stood out to me, so I'm keeping it here as a reminder of lessons I've learned in the past. It reminds me that throughout all human history, we have come up with elaborate systems and ideologies (like religions and politics) to trick ourselves into happiness.

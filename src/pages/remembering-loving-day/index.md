@@ -1,7 +1,6 @@
 ---
 title: Remembering Loving Day
 date: "2017-06-12T00:00:00.000Z"
-path: "/remembering-loving-day/"
 ---
 
 Today is the 50th anniversary of [Loving Day](https://en.wikipedia.org/wiki/Loving_Day), which celebrates the landmark civil rights decision of [Loving v. Virginia](https://en.wikipedia.org/wiki/Loving_v._Virginia). This court decision made interracial marriage legal. I wouldn't be allowed to be married to my wife if this court case had not overturned anti-miscegenation laws. I feel simultaneously blessed and livid. Blessed because I love my wife, I'm glad we could get married without it ever entering our heads that it might not be legal to do so. Livid, because 50 years wasn't that long ago.

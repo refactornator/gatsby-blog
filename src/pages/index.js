@@ -36,23 +36,20 @@ export default class BlogIndex extends React.Component {
     return (
       <PostList>
         <Helmet title={siteTitle} />
-        {posts.map(post => {
-          if (post.node.frontmatter.path !== '/404/') {
-            const title = get(post, 'node.frontmatter.title') || post.node.path
-            return (
-              <PostItem key={post.node.frontmatter.path}>
-                <Title>
-                  <Link
-                    style={{ boxShadow: 'none' }}
-                    to={post.node.frontmatter.path}
-                  >
-                    {title}
-                  </Link>
-                </Title>
-                <small>{post.node.frontmatter.date}</small>
-              </PostItem>
-            )
-          }
+        {posts.map(({ node }) => {
+          // if (post.node.frontmatter.path !== '/404/') {
+          const title = get(node, 'frontmatter.title') || node.fields.slug
+          return (
+            <PostItem key={node.fields.slug}>
+              <Title>
+                <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
+                  {title}
+                </Link>
+              </Title>
+              <small>{node.frontmatter.date}</small>
+            </PostItem>
+          )
+          // }
         })}
       </PostList>
     )
@@ -70,11 +67,11 @@ export const pageQuery = graphql`
       edges {
         node {
           excerpt
-          frontmatter {
-            path
-            date(formatString: "DD MMMM, YYYY")
+          fields {
+            slug
           }
           frontmatter {
+            date(formatString: "DD MMMM, YYYY")
             title
           }
         }
