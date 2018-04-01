@@ -37,7 +37,6 @@ export default class BlogIndex extends React.Component {
       <PostList>
         <Helmet title={siteTitle} />
         {posts.map(({ node }) => {
-          // if (post.node.frontmatter.path !== '/404/') {
           const title = get(node, 'frontmatter.title') || node.fields.slug
           return (
             <PostItem key={node.fields.slug}>
@@ -49,7 +48,6 @@ export default class BlogIndex extends React.Component {
               <small>{node.frontmatter.date}</small>
             </PostItem>
           )
-          // }
         })}
       </PostList>
     )

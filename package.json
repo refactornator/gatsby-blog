@@ -3,7 +3,6 @@
   "description": "William Lindner's Blog",
   "author": "William Lindner <wlindner522@gmail.com>",
   "dependencies": {
-    "babel-plugin-styled-components": "^1.5.1",
     "gatsby": "^1.9.243",
     "gatsby-link": "^1.6.40",
     "gatsby-plugin-google-analytics": "^1.0.25",
