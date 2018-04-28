@@ -72,8 +72,9 @@ class Header extends React.Component {
           >
             About
           </Link>
-          <Link style={linkStyle} to={'/'}>
+          <Link style={{ ...linkStyle, flexDirection: 'column' }} to={'/'}>
             <Image src={logo} />
+            <div>Posts</div>
           </Link>
           <Link
             style={{ ...linkStyle, justifyContent: 'flex-start' }}
