@@ -1,112 +1,26 @@
-import $ from 'jquery'
 import React from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
-import MobileDetect from 'mobile-detect'
+import sizeMe from 'react-sizeme'
 
 import { colors } from '../utils/styles'
 import { rhythm } from '../utils/typography'
 
-import { initialize, startAnimation, stopAnimation } from '../utils/header'
+import AnimatedShapes from './AnimatedShapes'
 
 import logo from '../images/wl3_logo.png'
 
 const Background = styled.header`
   height: 120px;
-  background: #f3f5f8;
-  position: relative;
-  transform-style: preserve-3d;
   display: flex;
-  justify-content: center;
+  position: relative;
+  background: #f3f5f8;
   align-items: center;
+  justify-content: center;
 
   a {
     font-weight: bold;
     text-decoration: none;
-  }
-
-  svg {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  circle,
-  line,
-  path {
-    fill: none;
-    stroke: white;
-    transform-origin: center center;
-
-    /*Set our animation play state to paused initially */
-    animation-play-state: paused !important;
-  }
-
-  circle {
-    stroke-width: 2px;
-  }
-
-  line {
-    stroke-width: 3px;
-  }
-
-  path {
-    stroke-width: 2px;
-    stroke-linecap: round;
-  }
-
-  .playing {
-    animation-play-state: running !important;
-  }
-
-  @keyframes growShrink {
-    from {
-      transform: none;
-    }
-    50% {
-      transform: scale(1.5);
-    }
-    to {
-      transform: none;
-    }
-  }
-
-  @keyframes spin {
-    from {
-      transform: none;
-    }
-    50% {
-      transform: rotate(360deg);
-    }
-    to {
-      transform: none;
-    }
-  }
-
-  @keyframes lineDisappear {
-    from {
-      stroke-dashoffset: null;
-    }
-    50% {
-      stroke-dashoffset: 50;
-    }
-    to {
-      stroke-dashoffset: null;
-    }
-  }
-
-  @keyframes lineCrawl {
-    from {
-      stroke-dashoffset: null;
-    }
-    50% {
-      stroke-dashoffset: 0;
-    }
-    to {
-      stroke-dashoffset: null;
-    }
   }
 `
 
@@ -135,19 +49,24 @@ const Image = styled.img`
   vertical-align: middle;
 `
 
-export default class Header extends React.Component {
-  componentDidMount() {
-    const mobileDetect = new MobileDetect(window.navigator.userAgent)
+class Header extends React.Component {
+  constructor(props) {
+    super(props)
 
-    initialize()
-    if (mobileDetect.mobile()) {
-      startAnimation()
+    this.state = {
+      animate: false,
     }
   }
 
   render() {
+    const { animate } = this.state
+    const { width } = this.props.size
+
     return (
-      <Background onMouseEnter={startAnimation} onMouseLeave={stopAnimation}>
+      <Background
+        onMouseOver={() => this.setState({ animate: true })}
+        onMouseOut={() => this.setState({ animate: false })}
+      >
         <Links>
           <Link
             style={{ ...linkStyle, justifyContent: 'flex-end' }}
@@ -165,8 +84,10 @@ export default class Header extends React.Component {
             Projects
           </Link>
         </Links>
-        <svg />
+        <AnimatedShapes animate={animate} width={width} height={120} />
       </Background>
     )
   }
 }
+
+export default sizeMe({ monitorWidth: true })(Header)
