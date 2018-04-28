@@ -22,8 +22,13 @@ const Title = styled.h3`
   margin-bottom: 0;
 
   a {
+    font-weight: bold;
     text-decoration: none;
   }
+`
+
+const SubTitle = styled.small`
+  font-size: 14px;
 `
 
 export default class BlogIndex extends React.Component {
@@ -43,7 +48,7 @@ export default class BlogIndex extends React.Component {
                   {title}
                 </Link>
               </Title>
-              <small>{node.frontmatter.date}</small>
+              <SubTitle>{node.frontmatter.date}</SubTitle>
             </PostItem>
           )
         })}
