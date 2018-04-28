@@ -6,8 +6,6 @@ import styled from 'styled-components'
 
 import { rhythm } from '../utils/typography'
 
-import '../utils/header'
-
 const PostList = styled.ul`
   margin: 0 auto;
   list-style-type: none;
