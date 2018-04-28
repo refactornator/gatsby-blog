@@ -1,7 +1,6 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
-import sizeMe from 'react-sizeme'
 
 import { colors } from '../utils/styles'
 import { rhythm } from '../utils/typography'
@@ -60,7 +59,6 @@ class Header extends React.Component {
 
   render() {
     const { animate } = this.state
-    const { width } = this.props.size
 
     return (
       <Background
@@ -84,10 +82,10 @@ class Header extends React.Component {
             Projects
           </Link>
         </Links>
-        <AnimatedShapes animate={animate} width={width} height={120} />
+        <AnimatedShapes animate={animate} />
       </Background>
     )
   }
 }
 
-export default sizeMe({ monitorWidth: true })(Header)
+export default Header
