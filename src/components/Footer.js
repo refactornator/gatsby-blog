@@ -4,6 +4,12 @@ import styled from 'styled-components'
 import { colors } from '../utils/styles'
 import { rhythm } from '../utils/typography'
 
+const Block = styled.div`
+  color: ${colors.snuggles};
+  letter-spacing: 0.2em;
+  line-height: 32px;
+`
+
 const Footer = styled.footer`
   color: #666;
   width: 100%;
@@ -35,12 +41,6 @@ const Footer = styled.footer`
       line-height: normal;
     }
   }
-`
-
-const Block = styled.div`
-  color: ${colors.snuggles};
-  letter-spacing: 0.2em;
-  line-height: 32px;
 `
 
 export default () => {

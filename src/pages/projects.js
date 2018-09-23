@@ -1,6 +1,8 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 
+import Layout from '../components/layout'
+
 import spotsyThumbnail from '../images/projects/spotsy.png'
 import zoomdataThumbnail from '../images/projects/zoomdata-logo.png'
 import courierThumbnail from '../images/projects/courier.png'
@@ -131,20 +133,22 @@ const projects = [
 export default class Projects extends React.Component {
   render() {
     return (
-      <Grid>
-        {projects.map(project => {
-          return (
-            <Item key={project.name}>
-              <Link href={project.link} target="_blank">
-                <Thumbnail url={project.thumbnail} />
-                <Name>{project.name}</Name>
-              </Link>
-              <Type>{project.type}</Type>
-              <Description>{project.description}</Description>
-            </Item>
-          )
-        })}
-      </Grid>
+      <Layout>
+        <Grid>
+          {projects.map(project => {
+            return (
+              <Item key={project.name}>
+                <Link href={project.link} target="_blank">
+                  <Thumbnail url={project.thumbnail} />
+                  <Name>{project.name}</Name>
+                </Link>
+                <Type>{project.type}</Type>
+                <Description>{project.description}</Description>
+              </Item>
+            )
+          })}
+        </Grid>
+      </Layout>
     )
   }
 }

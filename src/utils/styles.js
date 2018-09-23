@@ -45,4 +45,4 @@ const animations = {
   `,
 }
 
-export default { colors, easings, animations }
+export { colors, easings, animations }
