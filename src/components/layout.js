@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import styled, { injectGlobal } from 'styled-components'
 
 import { rhythm } from '../utils/typography'
@@ -31,7 +31,7 @@ class Template extends React.Component {
     return (
       <Main>
         <Header />
-        <Content>{children()}</Content>
+        <Content>{children}</Content>
         <Footer />
       </Main>
     )

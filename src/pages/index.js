@@ -1,10 +1,12 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { Link, graphql } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 
 import { rhythm } from '../utils/typography'
+
+import Layout from '../components/layout'
 
 const PostList = styled.ul`
   margin: 0 auto;
@@ -37,28 +39,30 @@ export default class BlogIndex extends React.Component {
     const posts = get(this, 'props.data.allMarkdownRemark.edges')
 
     return (
-      <PostList>
-        <Helmet title={siteTitle} />
-        {posts.map(({ node }) => {
-          const title = get(node, 'frontmatter.title') || node.fields.slug
-          return (
-            <PostItem key={node.fields.slug}>
-              <Title>
-                <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </Title>
-              <SubTitle>{node.frontmatter.date}</SubTitle>
-            </PostItem>
-          )
-        })}
-      </PostList>
+      <Layout>
+        <PostList>
+          <Helmet title={siteTitle} />
+          {posts.map(({ node }) => {
+            const title = get(node, 'frontmatter.title') || node.fields.slug
+            return (
+              <PostItem key={node.fields.slug}>
+                <Title>
+                  <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
+                    {title}
+                  </Link>
+                </Title>
+                <SubTitle>{node.frontmatter.date}</SubTitle>
+              </PostItem>
+            )
+          })}
+        </PostList>
+      </Layout>
     )
   }
 }
 
 export const pageQuery = graphql`
-  query IndexQuery {
+  query {
     site {
       siteMetadata {
         title
