@@ -51,6 +51,18 @@ module.exports = {
         trackingId: 'UA-33225523-1',
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `William Lindner's Blog`,
+        short_name: `wl3.me`,
+        start_url: `/`,
+        background_color: `#f7f7f7`,
+        theme_color: `#1A6ED7`,
+        display: `minimal-ui`,
+        icon: `src/images/wl3_logo.png`, // This path is relative to the root of the site.
+      },
+    },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
