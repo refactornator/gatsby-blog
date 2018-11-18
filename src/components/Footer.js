@@ -5,7 +5,7 @@ import { colors } from '../utils/styles'
 import { rhythm } from '../utils/typography'
 
 const Block = styled.div`
-  color: ${colors.snuggles};
+  color: ${colors.midnight};
   letter-spacing: 0.2em;
   line-height: 32px;
 `
@@ -18,7 +18,7 @@ const Footer = styled.footer`
   margin: 0 auto;
   font-size: 80%;
   overflow: hidden;
-  background-color: white;
+  padding-top: 6px;
   text-transform: uppercase;
   justify-content: space-between;
   border-top: 1px solid ${colors.store};
@@ -48,15 +48,19 @@ export default () => {
     <Footer>
       <Block>© {new Date().getFullYear().toString()} William Lindner</Block>
       <Block>
-        <a target="_blank" href="https://twitter.com/wlindner">
+        <a href="https://twitter.com/wlindner" target="_blank" rel="noopener">
           Twitter
         </a>{' '}
         |
-        <a target="_blank" href="https://github.com/wlindner">
+        <a href="https://github.com/wlindner" target="_blank" rel="noopener">
           Github
         </a>{' '}
         |
-        <a target="_blank" href="https://linkedin.com/in/wlindner">
+        <a
+          href="https://linkedin.com/in/wlindner"
+          target="_blank"
+          rel="noopener"
+        >
           Linkedin
         </a>
       </Block>
