@@ -16,6 +16,7 @@ const Background = styled.header`
   background: #f3f5f8;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 
   a {
     font-weight: bold;

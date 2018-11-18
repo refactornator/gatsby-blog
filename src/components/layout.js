@@ -14,6 +14,7 @@ const Main = styled.main`
   height: 100%;
   display: flex;
   flex-direction: column;
+  background-color: #f7f7f7;
 `
 
 const Content = styled.section`
