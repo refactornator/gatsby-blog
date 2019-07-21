@@ -2,20 +2,18 @@ import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
-import { colors } from '../utils/styles'
-import { rhythm } from '../utils/typography'
-
 import AnimatedShapes from './AnimatedShapes'
 
 import logo from '../images/wl3_logo.png'
 
 const Background = styled.header`
+  width: 100%;
   height: 120px;
   display: flex;
   position: relative;
-  background: #f3f5f8;
   align-items: center;
   justify-content: center;
+  background-color: #f3f5f8;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 
   a {

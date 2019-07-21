@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import styled, { injectGlobal } from 'styled-components'
 
@@ -9,13 +8,18 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 
 injectGlobal`
+  html, body, #___gatsby, [role="group"] {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #f7f7f7;
+  }
 `
 
 const Main = styled.main`
-  height: 100%;
   display: flex;
+  min-height: 100%;
   flex-direction: column;
-  background-color: #f7f7f7;
 `
 
 const Content = styled.section`
