@@ -52,6 +52,8 @@
     "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "gatsby build",
-    "deploy": "gatsby build --prefix-paths && gh-pages --dist public --branch master --repo https://github.com/wlindner/wlindner.github.io"
+    "deploy": "gatsby build --prefix-paths && gh-pages --dist public --branch master --repo https://github.com/wlindner/wlindner.github.io",
+    "postdeploy": "npm run purge-cache",
+    "purge-cache": "source .env && ./purge-cloudflare-cache.sh"
   }
 }
