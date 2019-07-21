@@ -1,13 +1,13 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import styled, { injectGlobal } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 import { rhythm } from '../utils/typography'
 
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
   html, body, #___gatsby, [role="group"] {
     margin: 0;
     padding: 0;
@@ -35,14 +35,17 @@ class Template extends React.Component {
     const { children } = this.props
 
     return (
-      <Main>
-        <Helmet>
-          <meta name="description" content="William Lindner's Blog" />
-        </Helmet>
-        <Header />
-        <Content>{children}</Content>
-        <Footer />
-      </Main>
+      <React.Fragment>
+        <GlobalStyle />
+        <Main>
+          <Helmet>
+            <meta name="description" content="William Lindner's Blog" />
+          </Helmet>
+          <Header />
+          <Content>{children}</Content>
+          <Footer />
+        </Main>
+      </React.Fragment>
     )
   }
 }
