@@ -52,12 +52,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: 'UA-33225523-1',
-      },
-    },
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `William Lindner's Blog`,
