@@ -4,8 +4,6 @@ import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 
-import { rhythm } from '../utils/typography'
-
 import Layout from '../components/layout'
 
 const PostList = styled.ul`

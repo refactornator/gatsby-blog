@@ -1,4 +1,3 @@
-const each = require('lodash/each')
 const Promise = require('bluebird')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
@@ -34,13 +33,13 @@ exports.createPages = ({ graphql, actions }) => {
 
         // Create blog posts pages.
         const posts = result.data.allMarkdownRemark.edges
-
-        each(posts, post => {
+        posts.forEach(post => {
+          const { slug } = post.node.fields
           createPage({
-            path: post.node.fields.slug,
+            path: slug,
             component: blogPost,
             context: {
-              slug: post.node.fields.slug,
+              slug,
             },
           })
         })
