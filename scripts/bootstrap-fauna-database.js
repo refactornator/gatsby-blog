@@ -49,19 +49,51 @@ if (process.env.FAUNADB_SECRET) {
 
 function createFaunaDB(key) {
   console.log('Create the database!')
-  const client = new faunadb.Client({
+  const adminClient = new faunadb.Client({
     secret: key,
   })
 
-  return client
-    .query(q.CreateCollection({ name: 'likes' }))
+  return adminClient
+    .query(q.CreateDatabase({ name: 'blog' }))
     .then(() => {
-      return client.query(
-        q.CreateIndex({
-          name: 'all_likes',
-          source: q.Collection('likes'),
+      return adminClient
+        .query(
+          q.CreateKey({
+            database: q.Database('blog'),
+            role: 'server',
+          })
+        )
+        .then(({ secret }) => {
+          const dbClient = new faunadb.Client({
+            secret,
+          })
+          return dbClient
+            .query(q.CreateCollection({ name: 'likes' }))
+            .then(() => {
+              return dbClient
+                .query(
+                  q.CreateIndex({
+                    name: 'all_likes',
+                    source: q.Collection('likes'),
+                  })
+                )
+                .then(() => {
+                  return dbClient.query(
+                    q.CreateIndex({
+                      name: 'likes_by_path',
+                      source: q.Collection('likes'),
+                      terms: [{ field: ['data', 'path'] }],
+                    })
+                  )
+                })
+                .catch(e => {
+                  console.log('something went wrong: ', e)
+                })
+            })
+            .catch(e => {
+              console.log('something went wrong: ', e)
+            })
         })
-      )
     })
     .catch(e => {
       if (
