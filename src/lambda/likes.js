@@ -11,8 +11,7 @@ export function handler(event, context, callback) {
   console.log('event: ', event)
   console.log('context: ', context)
 
-  const { referer, host } = event.headers
-  const refererUrl = url.parse(referer)
+  const { host, pathname } = url.parse(event.headers.referer)
 
   adminClient
     .query(
@@ -29,9 +28,7 @@ export function handler(event, context, callback) {
       switch (event.httpMethod) {
         case 'GET':
           dbClient
-            .query(
-              q.Count(q.Match(q.Index('likes_by_path'), refererUrl.pathname))
-            )
+            .query(q.Count(q.Match(q.Index('likes_by_path'), pathname)))
             .then(response => {
               console.log('success', response)
               callback(null, {
@@ -51,7 +48,7 @@ export function handler(event, context, callback) {
           dbClient
             .query(
               q.Create(q.Collection('likes'), {
-                data: { host, path: refererUrl.pathname },
+                data: { host, path: pathname },
               })
             )
             .then(response => {
