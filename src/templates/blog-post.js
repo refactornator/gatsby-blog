@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
+import { Button, Icon } from 'semantic-ui-react'
 import get from 'lodash/get'
 import styled from 'styled-components'
 
@@ -35,7 +36,7 @@ class BlogPostTemplate extends React.Component {
           <title>{`${post.frontmatter.title} | ${siteTitle}`}</title>
           <meta name="description" content={post.frontmatter.title} />
         </Helmet>
-        <Title>{post.frontmatter.title}</Title>
+        <Title><Button icon='heart'/>{post.frontmatter.title}</Title>
         <Date>{post.frontmatter.date}</Date>
         <Content dangerouslySetInnerHTML={{ __html: post.html }} />
       </Layout>

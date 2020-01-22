@@ -7,6 +7,8 @@ import { rhythm } from '../utils/typography'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
+import 'semantic-ui-less/semantic.less'
+
 const GlobalStyle = createGlobalStyle`
   html, body, #___gatsby, [role="group"] {
     margin: 0;
