@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import { rhythm, scale } from '../utils/typography'
 
 import Layout from '../components/layout'
+import LikeButton from '../components/LikeButton'
 
 const Title = styled.h1`
   color: black;
@@ -24,23 +25,22 @@ const Content = styled.div`
   color: black;
 `
 
-class BlogPostTemplate extends React.Component {
-  render() {
-    const post = this.props.data.markdownRemark
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title')
+const BlogPostTemplate = (props) => {
+  const post = props.data.markdownRemark
+  const siteTitle = get(props, 'data.site.siteMetadata.title')
 
-    return (
-      <Layout>
-        <Helmet>
-          <title>{`${post.frontmatter.title} | ${siteTitle}`}</title>
-          <meta name="description" content={post.frontmatter.title} />
-        </Helmet>
-        <Title>{post.frontmatter.title}</Title>
-        <Date>{post.frontmatter.date}</Date>
-        <Content dangerouslySetInnerHTML={{ __html: post.html }} />
-      </Layout>
-    )
-  }
+  return (
+    <Layout>
+      <Helmet>
+        <title>{`${post.frontmatter.title} | ${siteTitle}`}</title>
+        <meta name="description" content={post.frontmatter.title}/>
+      </Helmet>
+      <Title>{post.frontmatter.title}</Title>
+      <Date>{post.frontmatter.date}</Date>
+      <Content dangerouslySetInnerHTML={{ __html: post.html }}/>
+      <LikeButton />
+    </Layout>
+  )
 }
 
 export default BlogPostTemplate

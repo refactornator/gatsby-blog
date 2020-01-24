@@ -3,6 +3,9 @@
   "description": "William Lindner's Blog",
   "author": "William Lindner <wlindner522@gmail.com>",
   "dependencies": {
+    "@material-ui/core": "^4.8.3",
+    "@material-ui/icons": "^4.5.1",
+    "@material-ui/styles": "^4.8.2",
     "babel-plugin-styled-components": "^1.10.6",
     "faunadb": "^2.11.1",
     "gatsby": "^2.18.25",
@@ -10,6 +13,7 @@
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-html-attributes": "^1.0.5",
     "gatsby-plugin-manifest": "^2.2.37",
+    "gatsby-plugin-material-ui": "^2.1.6",
     "gatsby-plugin-offline": "^3.0.32",
     "gatsby-plugin-react-helmet": "^3.1.21",
     "gatsby-plugin-sharp": "^2.3.13",

@@ -30,24 +30,18 @@ const Content = styled.section`
   padding: ${rhythm(1.5)} ${rhythm(3 / 4)};
 `
 
-class Template extends React.Component {
-  render() {
-    const { children } = this.props
-
-    return (
-      <React.Fragment>
-        <GlobalStyle />
-        <Main>
-          <Helmet>
-            <meta name="description" content="William Lindner's Blog" />
-          </Helmet>
-          <Header />
-          <Content>{children}</Content>
-          <Footer />
-        </Main>
-      </React.Fragment>
-    )
-  }
-}
+const Template = ({ children }) => (
+  <React.Fragment>
+    <GlobalStyle/>
+    <Main>
+      <Helmet>
+        <meta name="description" content="William Lindner's Blog"/>
+      </Helmet>
+      <Header/>
+      <Content>{children}</Content>
+      <Footer/>
+    </Main>
+  </React.Fragment>
+)
 
 export default Template
