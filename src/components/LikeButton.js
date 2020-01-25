@@ -16,7 +16,9 @@ const isBrowser = () => typeof window !== 'undefined'
 
 const isPathLiked = (path) => {
   if (isBrowser() && window.localStorage.getItem('likedPaths')) {
-    return JSON.parse(window.localStorage.getItem('likedPaths') || '[]').includes(path)
+    return JSON.parse(
+      window.localStorage.getItem('likedPaths') || '[]'
+    ).includes(path)
   }
   return false
 }
@@ -34,7 +36,7 @@ const addLikedPath = path => {
 }
 
 const LikeButton = () => {
-  const { pathname } = window.location
+  const pathname = isBrowser() ? window.location.pathname : undefined
   const classes = useStyles()
   const [liked, setLiked] = useState(false)
   const [likeCount, setLikeCount] = useState(null)
@@ -44,12 +46,14 @@ const LikeButton = () => {
     setLiked(pathLiked)
 
     if (isBrowser()) {
-      fetch('/.netlify/functions/likes').then(response => {
-        return response.json()
-      }).then(count => {
-        setLikeCount(count)
-        console.log(count)
-      })
+      fetch('/.netlify/functions/likes')
+        .then(response => {
+          return response.json()
+        })
+        .then(count => {
+          setLikeCount(count)
+          console.log(count)
+        })
     }
   }, [])
 
