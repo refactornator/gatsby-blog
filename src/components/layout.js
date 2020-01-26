@@ -4,8 +4,8 @@ import styled, { createGlobalStyle } from 'styled-components'
 
 import { rhythm } from '../utils/typography'
 
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import Header from './Header'
+import Footer from './Footer'
 
 const GlobalStyle = createGlobalStyle`
   html, body, #___gatsby, [role="group"] {
@@ -30,18 +30,18 @@ const Content = styled.section`
   padding: ${rhythm(1.5)} ${rhythm(3 / 4)};
 `
 
-const Template = ({ children }) => (
+const Layout = ({ children }) => (
   <React.Fragment>
-    <GlobalStyle/>
+    <GlobalStyle />
     <Main>
       <Helmet>
-        <meta name="description" content="William Lindner's Blog"/>
+        <meta name="description" content="William Lindner's Blog" />
       </Helmet>
-      <Header/>
+      <Header />
       <Content>{children}</Content>
-      <Footer/>
+      <Footer />
     </Main>
   </React.Fragment>
 )
 
-export default Template
+export default Layout

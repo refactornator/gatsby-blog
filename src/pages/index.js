@@ -31,32 +31,30 @@ const SubTitle = styled.small`
   font-size: 14px;
 `
 
-export default class BlogIndex extends React.Component {
-  render() {
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const posts = get(this, 'props.data.allMarkdownRemark.edges')
+export default function Index({ data }) {
+  const siteTitle = get(data, 'site.siteMetadata.title')
+  const posts = get(data, 'allMarkdownRemark.edges')
 
-    return (
-      <Layout>
-        <PostList>
-          <Helmet title={siteTitle} />
-          {posts.map(({ node }) => {
-            const title = get(node, 'frontmatter.title') || node.fields.slug
-            return (
-              <PostItem key={node.fields.slug}>
-                <Title>
-                  <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
-                    {title}
-                  </Link>
-                </Title>
-                <SubTitle>{node.frontmatter.date}</SubTitle>
-              </PostItem>
-            )
-          })}
-        </PostList>
-      </Layout>
-    )
-  }
+  return (
+    <Layout>
+      <PostList>
+        <Helmet title={siteTitle} />
+        {posts.map(({ node }) => {
+          const title = get(node, 'frontmatter.title') || node.fields.slug
+          return (
+            <PostItem key={node.fields.slug}>
+              <Title>
+                <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
+                  {title}
+                </Link>
+              </Title>
+              <SubTitle>{node.frontmatter.date}</SubTitle>
+            </PostItem>
+          )
+        })}
+      </PostList>
+    </Layout>
+  )
 }
 
 export const pageQuery = graphql`
