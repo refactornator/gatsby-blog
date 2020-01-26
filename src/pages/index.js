@@ -4,6 +4,8 @@ import get from 'lodash/get'
 import { Helmet } from 'react-helmet-async'
 import styled from 'styled-components'
 
+import '@reach/tabs/styles.css'
+
 import Layout from '../components/layout'
 
 const PostList = styled.ul`
