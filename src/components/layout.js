@@ -1,5 +1,5 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 import styled, { createGlobalStyle } from 'styled-components'
 
 import { rhythm } from '../utils/typography'

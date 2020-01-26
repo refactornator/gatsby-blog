@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 import get from 'lodash/get'
 import styled from 'styled-components'
 
@@ -25,7 +25,7 @@ const Content = styled.div`
   color: black;
 `
 
-const BlogPostTemplate = (props) => {
+const BlogPostTemplate = props => {
   const post = props.data.markdownRemark
   const siteTitle = get(props, 'data.site.siteMetadata.title')
 
@@ -33,11 +33,11 @@ const BlogPostTemplate = (props) => {
     <Layout>
       <Helmet>
         <title>{`${post.frontmatter.title} | ${siteTitle}`}</title>
-        <meta name="description" content={post.frontmatter.title}/>
+        <meta name="description" content={post.frontmatter.title} />
       </Helmet>
       <Title>{post.frontmatter.title}</Title>
       <Date>{post.frontmatter.date}</Date>
-      <Content dangerouslySetInnerHTML={{ __html: post.html }}/>
+      <Content dangerouslySetInnerHTML={{ __html: post.html }} />
       <LikeButton />
     </Layout>
   )
