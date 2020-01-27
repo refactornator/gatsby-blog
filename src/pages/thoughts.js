@@ -11,6 +11,7 @@ import TextField from '@material-ui/core/TextField'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 import FormatQuote from '@material-ui/icons/FormatQuote'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 const auth = new GoTrue({
   APIUrl: 'https://william.cool/.netlify/identity',
@@ -117,6 +118,7 @@ const LoginForm = ({ setUser }) => {
 }
 
 const ThoughtForm = () => {
+  const [loading, setLoading] = useState(false)
   const [value, setValue] = useState('')
 
   const handleChange = event => {
@@ -125,12 +127,14 @@ const ThoughtForm = () => {
 
   const createThought = () => {
     console.log({ value })
+    setLoading(true)
     fetch('/.netlify/functions/thoughts', {
       body: value,
       method: 'POST',
     })
       .then(response => {
         setValue('')
+        setLoading(false)
         return response.json()
       })
       .then(json => {
@@ -150,13 +154,20 @@ const ThoughtForm = () => {
           margin="normal"
           multiline
           rows="4"
+          disabled={loading}
           value={value}
           onChange={handleChange}
         />
       </Grid>
       <Grid container justify="flex-end">
-        <Fab variant="extended" onClick={createThought}>
-          Create <FormatQuote />
+        <Fab variant="extended" disabled={loading} onClick={createThought}>
+          {loading ? (
+            <CircularProgress size={14} />
+          ) : (
+            <>
+              Create <FormatQuote />
+            </>
+          )}
         </Fab>
       </Grid>
     </Grid>
