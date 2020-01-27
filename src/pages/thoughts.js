@@ -125,7 +125,20 @@ const ThoughtForm = () => {
 
   const createThought = () => {
     console.log({ value })
-    setValue('')
+    fetch('/.netlify/functions/thoughts', {
+      body: value,
+      method: 'POST',
+    })
+      .then(response => {
+        setValue('')
+        return response.json()
+      })
+      .then(json => {
+        console.log(json)
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   return (
