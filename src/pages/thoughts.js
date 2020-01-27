@@ -1,13 +1,32 @@
 import React, { useState, useEffect } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 import GoTrue from 'gotrue-js'
+import Fab from '@material-ui/core/Fab'
+import Box from '@material-ui/core/Box'
+import Grid from '@material-ui/core/Grid'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
+import Container from '@material-ui/core/Container'
+import Typography from '@material-ui/core/Typography'
+import FormatQuote from '@material-ui/icons/FormatQuote'
 
 const auth = new GoTrue({
   APIUrl: 'https://william.cool/.netlify/identity',
 })
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  title: {
+    flexGrow: 1,
+  },
+}))
+
 export default function Thoughts() {
+  const classes = useStyles()
   const [user, setUser] = useState(null)
 
   useEffect(() => {
@@ -16,11 +35,32 @@ export default function Thoughts() {
     setUser(currentUser)
   }, [])
 
-  if (user !== null) {
-    return <ThoughtForm user={user} setUser={setUser} />
-  } else {
-    return <LoginForm setUser={setUser} />
+  const logout = () => {
+    user.logout()
+    setUser(null)
   }
+
+  return (
+    <div className={classes.root}>
+      <AppBar position="sticky">
+        <Toolbar>
+          <Typography variant="h6" className={classes.title}>
+            Thoughts
+          </Typography>
+          {user !== null ? (
+            <Button color="inherit" onClick={logout}>
+              Logout
+            </Button>
+          ) : (
+            <Typography variant="h6">Login</Typography>
+          )}
+        </Toolbar>
+      </AppBar>
+      <Container maxWidth="sm">
+        {user !== null ? <ThoughtForm /> : <LoginForm setUser={setUser} />}
+      </Container>
+    </div>
+  )
 }
 
 const LoginForm = ({ setUser }) => {
@@ -33,7 +73,9 @@ const LoginForm = ({ setUser }) => {
     setValues({ ...values, [prop]: event.target.value })
   }
 
-  const login = () => {
+  const login = event => {
+    event.preventDefault()
+
     auth
       .login(values.email, values.password, true)
       .then(user => {
@@ -45,60 +87,65 @@ const LoginForm = ({ setUser }) => {
 
   return (
     <div>
-      <h1>Login</h1>
-      <form noValidate autoComplete="off">
+      <form noValidate autoComplete="off" onSubmit={login}>
         <TextField
           label="E-mail"
           type="text"
+          fullWidth
+          margin="normal"
           value={values.email}
           onChange={handleChange('email')}
         />
         <TextField
           label="password"
           type="password"
+          fullWidth
+          margin="normal"
           value={values.password}
           onChange={handleChange('password')}
         />
-        <Button variant="contained" onClick={login}>
-          Login
-        </Button>
+        <Grid container justify="flex-end">
+          <Box marginTop={2}>
+            <Button type="submit" variant="contained" onClick={login}>
+              Submit
+            </Button>
+          </Box>
+        </Grid>
       </form>
     </div>
   )
 }
 
-const ThoughtForm = ({ user, setUser }) => {
-  const [thought, setThought] = useState('')
-
-  const logout = () => {
-    user.logout()
-    setUser(null)
-  }
+const ThoughtForm = () => {
+  const [value, setValue] = useState('')
 
   const handleChange = event => {
-    setThought(event.target.value)
+    setValue(event.target.value)
   }
 
   const createThought = () => {
-    console.log({ thought })
-    setThought('')
+    console.log({ value })
+    setValue('')
   }
 
   return (
-    <div>
-      <Button variant="contained" onClick={logout}>
-        Logout
-      </Button>
-      <TextField
-        label="New Thought"
-        multiline
-        rowsMax="4"
-        value={thought}
-        onChange={handleChange}
-      />
-      <Button variant="contained" onClick={createThought}>
-        Create Thought
-      </Button>
-    </div>
+    <Grid container>
+      <Grid item xs={12}>
+        <TextField
+          label="What is your thought?"
+          fullWidth
+          margin="normal"
+          multiline
+          rows="4"
+          value={value}
+          onChange={handleChange}
+        />
+      </Grid>
+      <Grid container justify="flex-end">
+        <Fab variant="extended" onClick={createThought}>
+          Create <FormatQuote />
+        </Fab>
+      </Grid>
+    </Grid>
   )
 }
