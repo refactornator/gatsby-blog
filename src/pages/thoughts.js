@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Button from '@material-ui/core/Button'
+import FormLabel from '@material-ui/core/FormLabel'
 import TextField from '@material-ui/core/TextField'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
@@ -32,7 +33,6 @@ export default function Thoughts() {
 
   useEffect(() => {
     const currentUser = auth.currentUser()
-    console.log({ currentUser })
     setUser(currentUser)
   }, [])
 
@@ -65,6 +65,8 @@ export default function Thoughts() {
 }
 
 const LoginForm = ({ setUser }) => {
+  const [errorMessage, setErrorMessage] = useState(null)
+  const [loading, setLoading] = useState(false)
   const [values, setValues] = useState({
     email: '',
     password: '',
@@ -77,13 +79,19 @@ const LoginForm = ({ setUser }) => {
   const login = event => {
     event.preventDefault()
 
+    setLoading(true)
     auth
       .login(values.email, values.password, true)
       .then(user => {
         console.log('Success! Response: ', { user })
         setUser(user)
+        // setLoading(false) // don't do this, because component gets unmounted
       })
-      .catch(error => console.log('Failed :( ', { error }))
+      .catch(error => {
+        console.log('Failed :( ', { error })
+        setErrorMessage(error.message)
+        setLoading(false)
+      })
   }
 
   return (
@@ -95,6 +103,7 @@ const LoginForm = ({ setUser }) => {
           fullWidth
           margin="normal"
           value={values.email}
+          disabled={loading}
           onChange={handleChange('email')}
         />
         <TextField
@@ -103,15 +112,26 @@ const LoginForm = ({ setUser }) => {
           fullWidth
           margin="normal"
           value={values.password}
+          disabled={loading}
           onChange={handleChange('password')}
         />
-        <Grid container justify="flex-end">
-          <Box marginTop={2}>
-            <Button type="submit" variant="contained" onClick={login}>
-              Submit
+        <Box marginTop={2}>
+          <Grid container justify="space-between">
+            <Grid item>
+              <FormLabel hidden={errorMessage === null} error>
+                {errorMessage}
+              </FormLabel>
+            </Grid>
+            <Button
+              type="submit"
+              disabled={loading}
+              variant="contained"
+              onClick={login}
+            >
+              {loading ? <CircularProgress /> : 'Submit'}
             </Button>
-          </Box>
-        </Grid>
+          </Grid>
+        </Box>
       </form>
     </div>
   )
@@ -126,7 +146,6 @@ const ThoughtForm = () => {
   }
 
   const createThought = () => {
-    console.log({ value })
     setLoading(true)
     fetch('/.netlify/functions/thoughts', {
       body: value,
@@ -162,7 +181,7 @@ const ThoughtForm = () => {
       <Grid container justify="flex-end">
         <Fab variant="extended" disabled={loading} onClick={createThought}>
           {loading ? (
-            <CircularProgress size={14} />
+            <CircularProgress />
           ) : (
             <>
               Create <FormatQuote />
