@@ -79,6 +79,7 @@ module.exports = {
       options: {
         name: `William Lindner's Blog`,
         short_name: `wl3.me`,
+        lang: `en`,
         start_url: `/`,
         background_color: `#f7f7f7`,
         theme_color: `#1A6ED7`,
