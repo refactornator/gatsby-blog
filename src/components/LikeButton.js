@@ -3,6 +3,7 @@ import Fab from '@material-ui/core/Fab'
 import Badge from '@material-ui/core/Badge'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import { makeStyles } from '@material-ui/core/styles'
+import { isBrowser } from '../utils/runtime'
 
 const useStyles = makeStyles(theme => ({
   fab: {
@@ -12,9 +13,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const isBrowser = () => typeof window !== 'undefined'
-
-const isPathLiked = (path) => {
+const isPathLiked = path => {
   if (isBrowser() && window.localStorage.getItem('likedPaths')) {
     return JSON.parse(
       window.localStorage.getItem('likedPaths') || '[]'
@@ -65,19 +64,25 @@ const LikeButton = () => {
       setLikeCount(likeCount + 1)
       fetch('/.netlify/functions/likes', {
         body: JSON.stringify({}),
-        method: 'POST'
-      }).then(response => {
-        return response.json()
-      }).then(json => {
-        console.log(json)
+        method: 'POST',
       })
+        .then(response => {
+          return response.json()
+        })
+        .then(json => {
+          console.log(json)
+        })
     }
   }
 
   return (
-    <Fab aria-label="like" className={classes.fab} onClick={!liked ? onClick : undefined}>
-      <Badge badgeContent={likeCount} color='primary'>
-        <FavoriteIcon color={liked ? 'secondary' : 'action'}/>
+    <Fab
+      aria-label="like"
+      className={classes.fab}
+      onClick={!liked ? onClick : undefined}
+    >
+      <Badge badgeContent={likeCount} color="primary">
+        <FavoriteIcon color={liked ? 'secondary' : 'action'} />
       </Badge>
     </Fab>
   )
