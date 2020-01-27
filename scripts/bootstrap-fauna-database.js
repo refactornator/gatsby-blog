@@ -55,7 +55,7 @@ function createFaunaDB(key) {
 
   return adminClient
     .query(q.CreateDatabase({ name: 'blog' }))
-    .then(() => {
+    .finally(() => {
       return adminClient
         .query(
           q.CreateKey({
@@ -67,32 +67,59 @@ function createFaunaDB(key) {
           const dbClient = new faunadb.Client({
             secret,
           })
-          return dbClient
-            .query(q.CreateCollection({ name: 'likes' }))
-            .then(() => {
-              return dbClient
-                .query(
-                  q.CreateIndex({
-                    name: 'all_likes',
-                    source: q.Collection('likes'),
-                  })
-                )
-                .then(() => {
-                  return dbClient.query(
+
+          let promises = []
+
+          promises.push(
+            dbClient
+              .query(q.CreateCollection({ name: 'likes' }))
+              .then(() => {
+                return dbClient
+                  .query(
                     q.CreateIndex({
-                      name: 'likes_by_path',
+                      name: 'all_likes',
                       source: q.Collection('likes'),
-                      terms: [{ field: ['data', 'path'] }],
                     })
                   )
-                })
-                .catch(e => {
-                  console.log('something went wrong: ', e)
-                })
-            })
-            .catch(e => {
-              console.log('something went wrong: ', e)
-            })
+                  .then(() => {
+                    return dbClient.query(
+                      q.CreateIndex({
+                        name: 'likes_by_path',
+                        source: q.Collection('likes'),
+                        terms: [{ field: ['data', 'path'] }],
+                      })
+                    )
+                  })
+                  .catch(e => {
+                    console.log('something went wrong: ', e)
+                  })
+              })
+              .catch(e => {
+                console.log('something went wrong: ', e)
+              })
+          )
+
+          promises.push(
+            dbClient
+              .query(q.CreateCollection({ name: 'thoughts' }))
+              .then(() => {
+                return dbClient
+                  .query(
+                    q.CreateIndex({
+                      name: 'all_thoughts',
+                      source: q.Collection('thoughts'),
+                    })
+                  )
+                  .catch(e => {
+                    console.log('something went wrong: ', e)
+                  })
+              })
+              .catch(e => {
+                console.log('something went wrong: ', e)
+              })
+          )
+
+          return Promise.all(promises)
         })
     })
     .catch(e => {
