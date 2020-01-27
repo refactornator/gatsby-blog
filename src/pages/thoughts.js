@@ -25,6 +25,7 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1,
   },
+  offset: theme.mixins.toolbar,
 }))
 
 export default function Thoughts() {
@@ -57,6 +58,7 @@ export default function Thoughts() {
           )}
         </Toolbar>
       </AppBar>
+      <div className={classes.offset} />
       <Container maxWidth="sm">
         {user !== null ? <ThoughtForm /> : <LoginForm setUser={setUser} />}
       </Container>
