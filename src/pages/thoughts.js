@@ -25,6 +25,10 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1,
   },
+  thought: {
+    fontSize: '36px',
+    lineHeight: '36px',
+  },
   offset: theme.mixins.toolbar,
 }))
 
@@ -106,15 +110,22 @@ const LoginForm = ({ setUser }) => {
           margin="normal"
           value={values.email}
           disabled={loading}
+          autoFocus={true}
+          inputProps={{
+            autoCapitalize: 'none',
+          }}
           onChange={handleChange('email')}
         />
         <TextField
-          label="password"
+          label="Password"
           type="password"
           fullWidth
           margin="normal"
           value={values.password}
           disabled={loading}
+          inputProps={{
+            autoCapitalize: 'none',
+          }}
           onChange={handleChange('password')}
         />
         <Box marginTop={2}>
@@ -140,6 +151,7 @@ const LoginForm = ({ setUser }) => {
 }
 
 const ThoughtForm = () => {
+  const classes = useStyles()
   const [loading, setLoading] = useState(false)
   const [value, setValue] = useState('')
 
@@ -174,22 +186,30 @@ const ThoughtForm = () => {
           fullWidth
           margin="normal"
           multiline
-          rows="4"
+          rows="6"
           disabled={loading}
           value={value}
+          autoFocus={true}
           onChange={handleChange}
+          InputProps={{
+            classes: {
+              input: classes.thought,
+            },
+          }}
         />
       </Grid>
       <Grid container justify="flex-end">
-        <Fab variant="extended" disabled={loading} onClick={createThought}>
-          {loading ? (
-            <CircularProgress />
-          ) : (
-            <>
-              Create <FormatQuote />
-            </>
-          )}
-        </Fab>
+        <Box marginTop={1}>
+          <Fab variant="extended" disabled={loading} onClick={createThought}>
+            {loading ? (
+              <CircularProgress />
+            ) : (
+              <>
+                Create <FormatQuote />
+              </>
+            )}
+          </Fab>
+        </Box>
       </Grid>
     </Grid>
   )
