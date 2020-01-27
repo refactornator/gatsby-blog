@@ -186,7 +186,7 @@ const ThoughtForm = () => {
           fullWidth
           margin="normal"
           multiline
-          rows="6"
+          rows="5"
           disabled={loading}
           value={value}
           autoFocus={true}
