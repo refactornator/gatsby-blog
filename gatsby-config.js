@@ -89,12 +89,6 @@ module.exports = {
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet-async`,
     {
-      resolve: `gatsby-plugin-netlify-identity`,
-      options: {
-        url: `https://modest-shockley-6df843.netlify.com/`,
-      },
-    },
-    {
       resolve: 'gatsby-plugin-typography',
       options: {
         pathToConfigModule: 'src/utils/typography',
