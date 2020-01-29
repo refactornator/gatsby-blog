@@ -7,70 +7,69 @@ const adminClient = new faunadb.Client({
 })
 
 // For more info, check https://www.netlify.com/docs/functions/#javascript-lambda-functions
-export function handler(event, context, callback) {
+export async function handler (event, context) {
   console.log('event: ', event)
   console.log('context: ', context)
 
   const { host, pathname } = url.parse(event.headers.referer)
 
-  adminClient
+  const { secret } = await adminClient
     .query(
       q.CreateKey({
         database: q.Database('blog'),
         role: 'server',
       })
     )
-    .then(({ secret }) => {
-      const dbClient = new faunadb.Client({
-        secret,
-      })
 
-      switch (event.httpMethod) {
-        case 'GET':
-          dbClient
-            .query(q.Count(q.Match(q.Index('likes_by_path'), pathname)))
-            .then(response => {
-              console.log('success', response)
-              callback(null, {
-                statusCode: 200,
-                body: JSON.stringify(response),
-              })
-            })
-            .catch(error => {
-              console.log('error', error)
-              callback(null, {
-                statusCode: 400,
-                body: JSON.stringify(error),
-              })
-            })
-          break
-        case 'POST':
-          dbClient
-            .query(
-              q.Create(q.Collection('likes'), {
-                data: { host, path: pathname },
-              })
-            )
-            .then(response => {
-              console.log('success', response)
-              callback(null, {
-                statusCode: 200,
-                body: JSON.stringify(response),
-              })
-            })
-            .catch(error => {
-              console.log('error', error)
-              callback(null, {
-                statusCode: 400,
-                body: JSON.stringify(error),
-              })
-            })
-          break
-        default:
-          callback(null, {
-            statusCode: 404,
-            body: JSON.stringify({}),
-          })
+  const dbClient = new faunadb.Client({
+    secret,
+  })
+
+  switch (event.httpMethod) {
+    case 'GET':
+      try {
+        const response = await dbClient
+          .query(q.Count(q.Match(q.Index('likes_by_path'), pathname)))
+
+        console.log('success', response)
+
+        return {
+          statusCode: 200,
+          body: JSON.stringify(response),
+        }
+      } catch (error) {
+        console.log('error', error)
+        return {
+          statusCode: 400,
+          body: JSON.stringify(error),
+        }
       }
-    })
+    case 'POST':
+      try {
+        const response = await dbClient
+          .query(
+            q.Create(q.Collection('likes'), {
+              data: { host, path: pathname },
+            })
+          )
+
+        console.log('success', response)
+
+        return {
+          statusCode: 200,
+          body: JSON.stringify(response),
+        }
+      } catch (error) {
+        console.log('error', error)
+        return {
+          statusCode: 400,
+          body: JSON.stringify(error),
+        }
+      }
+    default:
+      return {
+        statusCode: 404,
+        body: JSON.stringify({}),
+      }
+  }
 }
