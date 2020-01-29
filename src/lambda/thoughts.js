@@ -7,7 +7,7 @@ const adminClient = new faunadb.Client({
 })
 
 // For more info, check https://www.netlify.com/docs/functions/#javascript-lambda-functions
-export function handler(event, context, callback) {
+export function handler (event, context, callback) {
   console.log(`event.body: ${event.body}`)
 
   adminClient
@@ -23,6 +23,24 @@ export function handler(event, context, callback) {
       })
 
       switch (event.httpMethod) {
+        case 'GET':
+          dbClient
+            .query(q.Map(q.Paginate(q.Match(q.Index('all_thoughts'))), q.Lambda('x', q.Get(q.Var('x')))))
+            .then(response => {
+              console.log('success', response)
+              callback(null, {
+                statusCode: 200,
+                body: JSON.stringify(response),
+              })
+            })
+            .catch(error => {
+              console.log('error', error)
+              callback(null, {
+                statusCode: 400,
+                body: JSON.stringify(error),
+              })
+            })
+          break
         case 'POST':
           dbClient
             .query(
