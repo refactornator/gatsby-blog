@@ -78,7 +78,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `William Lindner's Blog`,
-        short_name: `wl3.me`,
+        short_name: `william.cool`,
         lang: `en`,
         start_url: `/`,
         background_color: `#f7f7f7`,
