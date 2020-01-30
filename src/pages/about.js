@@ -2,9 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 import face from '../images/face.jpg'
-import { rhythm } from '../utils/typography'
 
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 
 const Summary = styled.div`
   margin-bottom: 40px;

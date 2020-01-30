@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 
 import spotsyThumbnail from '../images/projects/spotsy.png'
 import zoomdataThumbnail from '../images/projects/zoomdata-logo.png'

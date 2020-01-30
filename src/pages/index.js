@@ -4,7 +4,7 @@ import get from 'lodash/get'
 import { Helmet } from 'react-helmet-async'
 import styled from 'styled-components'
 
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 
 const PostList = styled.ul`
   margin: 0 auto;
