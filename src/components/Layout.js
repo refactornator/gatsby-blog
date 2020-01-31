@@ -30,7 +30,7 @@ const Content = styled.section`
   padding: ${rhythm(1.5)} ${rhythm(3 / 4)};
 `
 
-const Layout = ({ children }) => (
+export default ({ children }) => (
   <React.Fragment>
     <GlobalStyle />
     <Main>
@@ -43,5 +43,3 @@ const Layout = ({ children }) => (
     </Main>
   </React.Fragment>
 )
-
-export default Layout
