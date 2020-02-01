@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Layout from '../components/Layout'
-import {
-  Grid,
-  Card,
-  CardContent,
-  CircularProgress,
-  Divider,
-} from '@material-ui/core'
+import ThoughtList from '../components/ThoughtList'
+import { Grid, CircularProgress } from '@material-ui/core'
 
 export default () => {
   const [thoughts, setThoughts] = useState(null)
@@ -34,14 +29,7 @@ export default () => {
         {thoughts === null ? (
           <CircularProgress />
         ) : (
-          thoughts.map(({ id, ts, text }) => (
-            <Grid key={id} item xs={12}>
-              <Card raised={false} square={true}>
-                <CardContent>{text}</CardContent>
-              </Card>
-              <Divider />
-            </Grid>
-          ))
+          <ThoughtList thoughts={thoughts} />
         )}
       </Grid>
     </Layout>
