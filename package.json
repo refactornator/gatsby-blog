@@ -40,6 +40,12 @@
     "typography-theme-funston": "^0.16.19"
   },
   "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@storybook/addon-actions": "^5.3.9",
+    "@storybook/addon-links": "^5.3.9",
+    "@storybook/addons": "^5.3.9",
+    "@storybook/react": "^5.3.9",
+    "babel-loader": "^8.0.6",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.18.0",
     "http-proxy-middleware": "^0.20.0",
@@ -66,6 +72,8 @@
     "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "purge-cache": "source .env && ./purge-cloudflare-cache.sh",
-    "bootstrap": "node ./scripts/bootstrap-fauna-database.js"
+    "bootstrap": "node ./scripts/bootstrap-fauna-database.js",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   }
 }
