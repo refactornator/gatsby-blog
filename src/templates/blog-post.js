@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet-async'
 import get from 'lodash/get'
@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import { rhythm, scale } from '../utils/typography'
 
 import Layout from '../components/Layout'
-import LikeButton from '../components/LikeButton'
+import Feedback from '../components/Feedback'
 
 const Title = styled.h1`
   color: black;
@@ -25,7 +25,7 @@ const Content = styled.div`
   color: black;
 `
 
-const BlogPostTemplate = props => {
+export default props => {
   const post = props.data.markdownRemark
   const siteTitle = get(props, 'data.site.siteMetadata.title')
 
@@ -38,12 +38,10 @@ const BlogPostTemplate = props => {
       <Title>{post.frontmatter.title}</Title>
       <Date>{post.frontmatter.date}</Date>
       <Content dangerouslySetInnerHTML={{ __html: post.html }} />
-      <LikeButton />
+      <Feedback />
     </Layout>
   )
 }
-
-export default BlogPostTemplate
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {

@@ -119,6 +119,26 @@ function createFaunaDB(key) {
               })
           )
 
+          promises.push(
+            dbClient
+              .query(q.CreateCollection({ name: 'feedback' }))
+              .then(() => {
+                return dbClient
+                  .query(
+                    q.CreateIndex({
+                      name: 'all_feedback',
+                      source: q.Collection('feedback'),
+                    })
+                  )
+                  .catch(e => {
+                    console.log('something went wrong: ', e)
+                  })
+              })
+              .catch(e => {
+                console.log('something went wrong: ', e)
+              })
+          )
+
           return Promise.all(promises)
         })
     })
