@@ -17,7 +17,8 @@ import {
 import LikeButton from './LikeButton'
 
 const Container = styled.div`
-  padding: 0 200px;
+  margin: auto;
+  max-width: 300px;
 `
 
 export default () => {
@@ -70,7 +71,7 @@ export default () => {
           <Grid container justify="space-between" alignItems="center">
             <Grid item>
               <Button variant="contained" onClick={handleClickOpen}>
-                Tell me what you think
+                Send message
               </Button>
             </Grid>
             <Grid item>
