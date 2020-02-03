@@ -6,29 +6,57 @@ import { isBrowser } from '../utils/runtime'
 
 const isPathLiked = path => {
   if (isBrowser() && window.localStorage.getItem('likedPaths')) {
-    return JSON.parse(
-      window.localStorage.getItem('likedPaths') || '[]'
-    ).includes(path)
+    return path in JSON.parse(window.localStorage.getItem('likedPaths') || '{}')
   }
   return false
 }
 
-const addLikedPath = path => {
+const addLikedPath = (id, path) => {
   if (isBrowser()) {
     let likedPaths = JSON.parse(window.localStorage.getItem('likedPaths'))
     if (likedPaths) {
-      likedPaths.push(path)
+      likedPaths[path] = id
     } else {
-      likedPaths = [path]
+      likedPaths = { [path]: id }
     }
     window.localStorage.setItem('likedPaths', JSON.stringify(likedPaths))
   }
 }
 
+const removeLikedPath = path => {
+  if (isBrowser()) {
+    let likedPaths = JSON.parse(window.localStorage.getItem('likedPaths'))
+    if (likedPaths) {
+      delete likedPaths[path]
+      window.localStorage.setItem('likedPaths', JSON.stringify(likedPaths))
+    }
+  }
+}
+
+const getIdForLikedPath = path => {
+  if (isBrowser()) {
+    let likedPaths = JSON.parse(window.localStorage.getItem('likedPaths'))
+    if (likedPaths) {
+      return likedPaths[path]
+    }
+  }
+  return null
+}
+
 const LikeButton = () => {
   const pathname = isBrowser() ? window.location.pathname : undefined
-  const [liked, setLiked] = useState(false)
+  const [liked, setLiked] = useState(isPathLiked(pathname))
   const [likeCount, setLikeCount] = useState(null)
+
+  useEffect(() => {
+    if (isBrowser() && window.localStorage.getItem('likedPaths')) {
+      if (
+        Array.isArray(JSON.parse(window.localStorage.getItem('likedPaths')))
+      ) {
+        window.localStorage.removeItem('likedPaths')
+      }
+    }
+  }, [])
 
   useEffect(() => {
     const pathLiked = isPathLiked(pathname)
@@ -46,27 +74,48 @@ const LikeButton = () => {
     }
   }, [])
 
-  const onClick = () => {
-    setLiked(true)
+  const toggleLike = () => {
+    if (!liked) {
+      setLiked(true)
 
-    if (isBrowser()) {
-      addLikedPath(pathname)
-      setLikeCount(likeCount + 1)
-      fetch('/.netlify/functions/likes', {
-        body: JSON.stringify({}),
-        method: 'POST',
-      })
-        .then(response => {
-          return response.json()
+      if (isBrowser()) {
+        setLikeCount(likeCount + 1)
+        fetch('/.netlify/functions/likes', {
+          body: JSON.stringify({}),
+          method: 'POST',
         })
-        .then(json => {
-          console.log(json)
-        })
+          .then(response => {
+            return response.json()
+          })
+          .then(json => {
+            console.log(json)
+            addLikedPath(json.ref['@ref'].id, pathname)
+          })
+      }
+    } else {
+      setLiked(false)
+
+      if (isBrowser()) {
+        setLikeCount(likeCount - 1)
+        const id = getIdForLikedPath(pathname)
+        if (id) {
+          fetch(`/.netlify/functions/likes/${id}`, {
+            method: 'DELETE',
+          })
+            .then(response => {
+              removeLikedPath(pathname)
+              return response.json()
+            })
+            .then(json => {
+              console.log(json)
+            })
+        }
+      }
     }
   }
 
   return (
-    <Fab aria-label="like" onClick={!liked ? onClick : undefined}>
+    <Fab aria-label="like" onClick={toggleLike}>
       <Badge badgeContent={likeCount} color="primary">
         <FavoriteIcon color={liked ? 'secondary' : 'action'} />
       </Badge>
