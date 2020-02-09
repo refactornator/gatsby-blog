@@ -30,11 +30,11 @@ const Content = styled.section`
   padding: ${rhythm(1.5)} ${rhythm(3 / 4)};
 `
 
-export default ({ children }) => (
+export default ({ children, title }) => (
   <React.Fragment>
     <GlobalStyle />
     <Main>
-      <Helmet>
+      <Helmet title={title}>
         <meta name="description" content="William Lindner's Blog" />
       </Helmet>
       <Header />

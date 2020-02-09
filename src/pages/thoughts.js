@@ -24,7 +24,7 @@ export default () => {
   }, [])
 
   return (
-    <Layout>
+    <Layout title="Thoughts">
       <Grid container justify="center">
         {thoughts === null ? (
           <CircularProgress />

@@ -24,6 +24,7 @@ const IntroVideo = styled.video`
 `
 
 export default ({ data }) => {
+  const { title } = data.site.siteMetadata
   const [dialogOpen, setDialogOpen] = useState(false)
 
   const handleClickOpen = () => {
@@ -35,7 +36,7 @@ export default ({ data }) => {
   }
 
   return (
-    <Layout>
+    <Layout title={title}>
       <Summary>
         <IntroVideo autoPlay loop controls alt="William Lindner">
           <source src={webm} type="video/webm" />

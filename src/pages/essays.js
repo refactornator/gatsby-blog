@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Helmet } from 'react-helmet-async'
 
 import Layout from '../components/Layout'
 import EssayList from '../components/EssayList'
@@ -10,8 +9,7 @@ export default ({ data }) => {
   const { edges } = data.allMarkdownRemark
 
   return (
-    <Layout>
-      <Helmet title={title} />
+    <Layout title={title}>
       <EssayList essays={edges} />
     </Layout>
   )
