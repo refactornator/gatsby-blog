@@ -8,3 +8,6 @@ public
 .env
 .idea/
 yarn.lock
+
+# Local Netlify folder
+.netlify
