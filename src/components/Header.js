@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
+import GitHubIcon from '@material-ui/icons/GitHub'
 
 import AnimatedShapes from './AnimatedShapes'
 
@@ -67,20 +68,20 @@ class Header extends React.Component {
         <Links>
           <Link
             style={{ ...linkStyle, justifyContent: 'flex-end' }}
-            to={'/about/'}
+            to={'/essays/'}
           >
-            About
+            Essays
           </Link>
           <Link style={{ ...linkStyle, flexDirection: 'column' }} to={'/'}>
             <Image src={logo} alt="wl3.me logo" />
-            <div>Posts</div>
           </Link>
-          <Link
+          <a
+            target="_blank"
             style={{ ...linkStyle, justifyContent: 'flex-start' }}
-            to={'/projects/'}
+            href="https://github.com/wlindner"
           >
-            Projects
-          </Link>
+            <GitHubIcon fontSize="large" />
+          </a>
         </Links>
         <AnimatedShapes animate={animate} />
       </Background>
