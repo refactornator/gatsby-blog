@@ -2,3 +2,9 @@
   command = "npm run build"
   functions = "lambda"
   publish = "public"
+
+[[redirects]]
+  from = "/2015/05/01/react-in-your-react-native-webview-so-you-can-react-while-you-react.html"
+  to = "/react-in-your-react-native-webview-so-you-can-react-while-you-react/"
+  status = 200
+  force = true
