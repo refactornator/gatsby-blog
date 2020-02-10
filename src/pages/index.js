@@ -21,6 +21,7 @@ const Summary = styled.div`
 
 const Content = styled.div`
   max-width: 900px;
+  padding: 0 20px;
 `
 
 const IntroVideo = styled.video`
@@ -54,14 +55,7 @@ export default ({ data }) => {
           <p>
             I sometimes write code on{' '}
             <a target="_blank" href="https://github.com/wlindner">
-              https://github.com/wlindner
-            </a>
-            .
-          </p>
-          <p>
-            I never check{' '}
-            <a target="_blank" href="https://www.linkedin.com/in/wlindner">
-              https://www.linkedin.com/in/wlindner
+              Github
             </a>
             .
           </p>
