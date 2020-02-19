@@ -5,9 +5,6 @@ import styled from 'styled-components'
 import Layout from '../components/Layout'
 import FeedbackDialog from '../components/FeedbackDialog'
 
-import webm from '../video/intro.webm'
-import mp4 from '../video/intro.mp4'
-
 const Summary = styled.div`
   display: flex;
   margin-bottom: 40px;
@@ -63,10 +60,9 @@ export default ({ data }) => {
             Check out my <Link to="/essays">essays</Link>.
           </p>
         </Content>
-        <IntroVideo autoPlay loop controls alt="William Lindner">
-          <source src={webm} type="video/webm" />
-          <source src={mp4} type="video/mp4" />
-        </IntroVideo>
+        <iframe width="270" height="470"
+                src="https://www.youtube.com/embed/D4O-JSXoUL8?modestbranding=1&controls=0&playsinline=1&loop=1&autoplay=1"
+                frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" />
       </Summary>
       <FeedbackDialog onClose={handleClose} open={dialogOpen} />
     </Layout>
