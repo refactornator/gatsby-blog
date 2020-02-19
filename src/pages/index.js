@@ -21,10 +21,6 @@ const Content = styled.div`
   padding: 0 20px;
 `
 
-const IntroVideo = styled.video`
-  width: 270px;
-`
-
 export default ({ data }) => {
   const { title } = data.site.siteMetadata
   const [dialogOpen, setDialogOpen] = useState(false)
@@ -61,7 +57,7 @@ export default ({ data }) => {
           </p>
         </Content>
         <iframe width="270" height="470"
-                src="https://www.youtube.com/embed/D4O-JSXoUL8?modestbranding=1&controls=0&playsinline=1&loop=1&autoplay=1"
+                src="https://www.youtube-nocookie.com/embed/D4O-JSXoUL8?modestbranding=1&controls=0&playsinline=1&loop=1&autoplay=1"
                 frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" />
       </Summary>
       <FeedbackDialog onClose={handleClose} open={dialogOpen} />
