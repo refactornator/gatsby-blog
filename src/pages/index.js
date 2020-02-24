@@ -56,9 +56,13 @@ export default ({ data }) => {
             Check out my <Link to="/essays">essays</Link>.
           </p>
         </Content>
-        <iframe width="270" height="470"
-                src="https://www.youtube-nocookie.com/embed/D4O-JSXoUL8?modestbranding=1&controls=0&playsinline=1&loop=1&autoplay=1"
-                frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" />
+        <iframe
+          width="270"
+          height="470"
+          src="https://www.youtube-nocookie.com/embed/D4O-JSXoUL8?modestbranding=1&controls=0&playsinline=1&loop=1&playlist=D4O-JSXoUL8&autoplay=1"
+          frameBorder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        />
       </Summary>
       <FeedbackDialog onClose={handleClose} open={dialogOpen} />
     </Layout>
