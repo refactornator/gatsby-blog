@@ -25,7 +25,7 @@ export default ({ data }) => {
   const { title } = data.site.siteMetadata
   const [dialogOpen, setDialogOpen] = useState(false)
 
-  const handleClickOpen = () => {
+  const handleOpen = () => {
     setDialogOpen(true)
   }
 
@@ -40,7 +40,7 @@ export default ({ data }) => {
           <h1>Welcome to William's website.</h1>
           <h2>A place to share my thoughts.</h2>
           <p>
-            <a href="#" onClick={handleClickOpen}>
+            <a href="#" onClick={handleOpen}>
               Send me a message
             </a>{' '}
             if you want to contact me about something.
