@@ -1,35 +1,31 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import Layout from '../components/Layout'
+
 import webm from '../video/404.webm'
 import mp4 from '../video/404.mp4'
 
-const Container = styled.div`
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  overflow: hidden;
-  z-index: -100;
-  background-color: black;
+const Video = styled.video`
+  width: 854px;
+  height: 480px;
 `
 
-const FullPageVideo = styled.video`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+const Main = styled.h1`
+  font-family: courier;
+  text-align: center;
+  font-size: 64px;
+  font-style: bold;
 `
 
 const NotFoundPage = () => (
-  <Container>
-    <FullPageVideo autoPlay loop controls>
+  <Layout title="404 - Page Not Found | William Lindner's Blog">
+    <Main>404: Page Not Found</Main>
+    <Video autoPlay loop controls>
       <source src={webm} type="video/webm" />
       <source src={mp4} type="video/mp4" />
-    </FullPageVideo>
-  </Container>
+    </Video>
+  </Layout>
 )
 
 export default NotFoundPage
