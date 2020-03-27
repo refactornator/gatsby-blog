@@ -1,5 +1,5 @@
 node_modules/
-/functions-build/
+functions-build/
 public
 .gatsby-context.js
 .DS_Store
