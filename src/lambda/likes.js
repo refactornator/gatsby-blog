@@ -2,6 +2,8 @@ import url from 'url'
 import path from 'path'
 import faunadb from 'faunadb'
 
+import { getLocationData } from '../utils/lambdas'
+
 const q = faunadb.query
 const adminClient = new faunadb.Client({
   secret: process.env.FAUNADB_SECRET,
@@ -47,9 +49,12 @@ export async function handler(event, context) {
       }
     case 'POST':
       try {
+        const { 'client-ip': ipAddress } = event.headers
+        const locationData = await getLocationData(ipAddress)
+
         const response = await dbClient.query(
           q.Create(q.Collection('likes'), {
-            data: { host, path: pathname },
+            data: { host, ipAddress, path: pathname, ...locationData },
           })
         )
 
