@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, graphql } from 'gatsby'
 import styled from 'styled-components'
+import Codepen from 'react-codepen-embed'
 
 import Layout from '../components/Layout'
 import MessageDialog from '../components/MessageDialog'
@@ -46,6 +47,14 @@ export default ({ data }) => {
             if you want to contact me about something.
           </p>
           <p>
+            I live in <Link to="/moving-to-san-francisco">San Francisco</Link>.
+          </p>
+          <p>
+            I do software consulting at{' '}
+            <Link to="/my-first-two-years-at-pivotal">VMware Pivotal Labs</Link>
+            .
+          </p>
+          <p>
             I sometimes write code on{' '}
             <a target="_blank" href="https://github.com/wlindner">
               Github
@@ -64,6 +73,7 @@ export default ({ data }) => {
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         />
       </Summary>
+      <Codepen hash="IKGJi" user="wlindner" defaultTab="result" />
       <MessageDialog onClose={handleClose} open={dialogOpen} />
     </Layout>
   )
