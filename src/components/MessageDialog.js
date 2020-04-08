@@ -13,14 +13,14 @@ export default ({ onClose: handleClose, open }) => {
   const [value, setValue] = useState('')
   const [submitting, setSubmitting] = useState(false)
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     setValue(event.target.value)
   }
 
-  const submitFeedback = () => {
+  const submitMessage = () => {
     console.log('submitting')
     setSubmitting(true)
-    fetch('/.netlify/functions/feedback', {
+    fetch('/.netlify/functions/messages', {
       body: value,
       method: 'POST',
     })
@@ -29,7 +29,7 @@ export default ({ onClose: handleClose, open }) => {
         setSubmitting(false)
         handleClose()
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error)
         setSubmitting(false)
       })
@@ -46,7 +46,7 @@ export default ({ onClose: handleClose, open }) => {
           autoFocus
           rows={3}
           disabled={submitting}
-          label="Feedback"
+          label="Message"
           type="text"
           fullWidth
           onChange={handleChange}
@@ -59,11 +59,7 @@ export default ({ onClose: handleClose, open }) => {
         {submitting ? (
           <CircularProgress />
         ) : (
-          <Button
-            onClick={submitFeedback}
-            color="primary"
-            disabled={submitting}
-          >
+          <Button onClick={submitMessage} color="primary" disabled={submitting}>
             Send
           </Button>
         )}

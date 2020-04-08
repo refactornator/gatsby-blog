@@ -32,7 +32,7 @@ export async function handler(event, context) {
         const locationData = await getLocationData(ipAddress)
 
         const response = await dbClient.query(
-          q.Create(q.Collection('feedback'), {
+          q.Create(q.Collection('messages'), {
             data: {
               host,
               ipAddress,

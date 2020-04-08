@@ -3,7 +3,7 @@ import { Link, graphql } from 'gatsby'
 import styled from 'styled-components'
 
 import Layout from '../components/Layout'
-import FeedbackDialog from '../components/FeedbackDialog'
+import MessageDialog from '../components/MessageDialog'
 
 const Summary = styled.div`
   display: flex;
@@ -64,7 +64,7 @@ export default ({ data }) => {
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         />
       </Summary>
-      <FeedbackDialog onClose={handleClose} open={dialogOpen} />
+      <MessageDialog onClose={handleClose} open={dialogOpen} />
     </Layout>
   )
 }

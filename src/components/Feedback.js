@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Grid, Button, Card, CardHeader, CardContent } from '@material-ui/core'
 
 import LikeButton from './LikeButton'
-import FeedbackDialog from './FeedbackDialog'
+import MessageDialog from './MessageDialog'
 
 const Container = styled.div`
   margin: auto;
@@ -25,7 +25,7 @@ export default () => {
     <Container>
       <Card variant="outlined">
         <CardHeader
-          subheader="Anonymous Feedback"
+          subheader="Anonymous Feedback 🤔"
           style={{ paddingBottom: 8 }}
         />
         <CardContent style={{ paddingTop: 0 }}>
@@ -41,7 +41,7 @@ export default () => {
           </Grid>
         </CardContent>
 
-        <FeedbackDialog onClose={handleClose} open={dialogOpen} />
+        <MessageDialog onClose={handleClose} open={dialogOpen} />
       </Card>
     </Container>
   )

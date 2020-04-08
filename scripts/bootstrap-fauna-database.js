@@ -90,11 +90,11 @@ function createFaunaDB(key) {
                       })
                     )
                   })
-                  .catch(e => {
+                  .catch((e) => {
                     console.log('something went wrong: ', e)
                   })
               })
-              .catch(e => {
+              .catch((e) => {
                 console.log('something went wrong: ', e)
               })
           )
@@ -110,31 +110,31 @@ function createFaunaDB(key) {
                       source: q.Collection('thoughts'),
                     })
                   )
-                  .catch(e => {
+                  .catch((e) => {
                     console.log('something went wrong: ', e)
                   })
               })
-              .catch(e => {
+              .catch((e) => {
                 console.log('something went wrong: ', e)
               })
           )
 
           promises.push(
             dbClient
-              .query(q.CreateCollection({ name: 'feedback' }))
+              .query(q.CreateCollection({ name: 'messages' }))
               .then(() => {
                 return dbClient
                   .query(
                     q.CreateIndex({
-                      name: 'all_feedback',
-                      source: q.Collection('feedback'),
+                      name: 'all_messages',
+                      source: q.Collection('messages'),
                     })
                   )
-                  .catch(e => {
+                  .catch((e) => {
                     console.log('something went wrong: ', e)
                   })
               })
-              .catch(e => {
+              .catch((e) => {
                 console.log('something went wrong: ', e)
               })
           )
@@ -142,7 +142,7 @@ function createFaunaDB(key) {
           return Promise.all(promises)
         })
     })
-    .catch(e => {
+    .catch((e) => {
       if (
         e.requestResult.statusCode === 400 &&
         e.message === 'instance already exists'
@@ -168,7 +168,7 @@ function ask(question, callback) {
     input: process.stdin,
     output: process.stdout,
   })
-  rl.question(question + '\n', function(answer) {
+  rl.question(question + '\n', function (answer) {
     rl.close()
     callback(null, answer)
   })
