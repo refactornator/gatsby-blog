@@ -37,7 +37,7 @@ export default ({ data }) => {
     <Layout title={title}>
       <Summary>
         <Content>
-          <h1>Welcome to William's website.</h1>
+          <h1>Welcome to William Lindner's website.</h1>
           <h2>A place to share my thoughts.</h2>
           <p>
             <a href="#" onClick={handleOpen}>
