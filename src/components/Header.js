@@ -66,18 +66,12 @@ class Header extends React.Component {
         onMouseOut={() => this.setState({ animate: false })}
       >
         <Links>
-          <Link
-            style={{ ...linkStyle, justifyContent: 'flex-end' }}
-            to={'/essays/'}
-          >
-            Essays
-          </Link>
-          <Link style={{ ...linkStyle, flexDirection: 'column' }} to={'/'}>
-            <Image src={logo} alt="wl3.me logo" />
+          <Link style={{ ...linkStyle, justifyContent: 'flex-start' }} to={'/'}>
+            Home
           </Link>
           <a
             target="_blank"
-            style={{ ...linkStyle, justifyContent: 'flex-start' }}
+            style={{ ...linkStyle, justifyContent: 'flex-end' }}
             href="https://github.com/wlindner"
           >
             <GitHubIcon fontSize="large" />
