@@ -41,10 +41,7 @@ export default ({ data }) => {
           <h1>Welcome to William Lindner's website.</h1>
           <h2>A place to share my thoughts.</h2>
           <p>
-            <a href="#" onClick={handleOpen}>
-              Send me a message
-            </a>{' '}
-            if you want to contact me about something.
+            I live in <Link to="/moving-to-san-francisco">San Francisco</Link>.
           </p>
           <p>
             I live in <Link to="/moving-to-san-francisco">San Francisco</Link>.
@@ -55,6 +52,9 @@ export default ({ data }) => {
             .
           </p>
           <p>
+            One time I <Link to="/learning-elixir">learned Elixir</Link>.
+          </p>
+          <p>
             I sometimes write code on{' '}
             <a target="_blank" href="https://github.com/wlindner">
               Github
@@ -63,6 +63,12 @@ export default ({ data }) => {
           </p>
           <p>
             Check out my <Link to="/essays">essays</Link>.
+          </p>
+          <p>
+            <a href="#" onClick={handleOpen}>
+              Send me a message
+            </a>{' '}
+            if you want to contact me about something.
           </p>
         </Content>
         <iframe
