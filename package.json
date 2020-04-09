@@ -70,11 +70,10 @@
     "start:lambda": "touch .env && source .env && netlify-lambda serve src/lambda",
     "build": "npm run build:app && npm run build:lambda",
     "build:app": "gatsby build",
-    "build:lambda": "touch .env && source .env && netlify-lambda build src/lambda",
-    "prebuild": "echo 'setup faunaDB' && npm run bootstrap",
+    "build:lambda": "netlify-lambda build src/lambda",
     "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "bootstrap": "node ./scripts/bootstrap-fauna-database.js",
+    "bootstrap": "touch .env && source .env && node ./scripts/bootstrap-fauna-database.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   }
