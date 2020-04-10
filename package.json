@@ -8,6 +8,7 @@
     "@material-ui/styles": "^4.9.6",
     "axios": "^0.19.2",
     "babel-plugin-styled-components": "^1.10.7",
+    "encoding": "^0.1.12",
     "faunadb": "^2.13.1",
     "gatsby": "^2.20.13",
     "gatsby-link": "^2.3.2",
