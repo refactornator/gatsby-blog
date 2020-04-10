@@ -41,8 +41,11 @@ export default ({ data }) => {
           <h1>Welcome to William Lindner's website.</h1>
           <h2>A place to share my thoughts.</h2>
           <p>
-          <p>
             I live in <Link to="/moving-to-san-francisco">San Francisco</Link>.
+          </p>
+          <p>
+            I really enjoy{' '}
+            <Link to="/holotropic-breathwork">Holotropic Breathwork</Link>.
           </p>
           <p>
             I do software consulting at{' '}
