@@ -55,8 +55,8 @@ export default ({ data }) => {
             I live in <Link to="/moving-to-san-francisco">San Francisco</Link>.
             I really enjoy{' '}
             <Link to="/holotropic-breathwork">Holotropic Breathwork</Link>,
-            Improv, and <Link to="/lessons-leared-kickboxing">Kickboxing</Link>.
-            I do software consulting at{' '}
+            Improv, and <Link to="/lessons-learned-kickboxing">Kickboxing</Link>
+            . I do software consulting at{' '}
             <Link to="/my-first-two-years-at-pivotal">VMware Pivotal Labs</Link>
             . One time I <Link to="/learning-elixir">learned Elixir</Link>.
           </p>
