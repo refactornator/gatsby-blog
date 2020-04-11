@@ -1,17 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
+import TwitterIcon from '@material-ui/icons/Twitter'
+import GitHubIcon from '@material-ui/icons/GitHub'
+import LinkedInIcon from '@material-ui/icons/LinkedIn'
 
 import { colors } from '../utils/styles'
 
-const Block = styled.div`
-  color: ${colors.midnight};
-  letter-spacing: 0.2em;
-  line-height: 32px;
-`
-
 const Footer = styled.footer`
   width: 100%;
-  height: 60px;
+  height: 70px;
   overflow: hidden;
   background-color: #f3f5f8;
   border-top: 1px solid ${colors.store};
@@ -21,53 +18,47 @@ const Content = styled.div`
   color: #666;
   display: flex;
   margin: 0 auto;
-  font-size: 80%;
   padding-top: 6px;
   text-transform: uppercase;
+  justify-content: center;
+`
+
+const Attribution = styled.div`
+  color: ${colors.midnight};
+  text-align: center;
+`
+
+const IconWrapper = styled.div`
+  width: 142px;
+  color: ${colors.midnight};
+  padding: 0 10px;
+  display: flex;
   justify-content: space-between;
-
-  @media all and (max-width: 860px) {
-    display: block;
-    padding: 0 20px;
-    margin-bottom: 10px;
-
-    ${Block} {
-      font-size: 12px;
-      text-align: left;
-    }
-  }
-
-  @media all and (min-width: 860px) {
-    width: 860px;
-
-    ${Block} {
-      line-height: normal;
-    }
-  }
+  align-items: center;
 `
 
 export default () => {
   return (
     <Footer>
       <Content>
-        <Block>© {new Date().getFullYear().toString()} William Lindner</Block>
-        <Block>
+        <Attribution>
+          © {new Date().getFullYear().toString()} William Lindner
+        </Attribution>
+        <IconWrapper>
           <a href="https://twitter.com/wlindner" target="_blank" rel="noopener">
-            Twitter
-          </a>{' '}
-          |
+            <TwitterIcon />
+          </a>
           <a href="https://github.com/wlindner" target="_blank" rel="noopener">
-            Github
-          </a>{' '}
-          |
+            <GitHubIcon />
+          </a>
           <a
             href="https://linkedin.com/in/wlindner"
             target="_blank"
             rel="noopener"
           >
-            Linkedin
+            <LinkedInIcon />
           </a>
-        </Block>
+        </IconWrapper>
       </Content>
     </Footer>
   )

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Link, graphql } from 'gatsby'
 import styled from 'styled-components'
-import Codepen from 'react-codepen-embed'
 
 import Layout from '../components/Layout'
 import MessageDialog from '../components/MessageDialog'
@@ -19,7 +18,19 @@ const Summary = styled.div`
 
 const Content = styled.div`
   max-width: 900px;
-  padding: 0 20px;
+  padding: 0 6px;
+`
+
+const Title = styled.h1`
+  width: 100%;
+  font-weight: bold;
+  font-size: 100%;
+  margin-bottom: 8px;
+`
+
+const SubTitle = styled.h2`
+  width: 100%;
+  font-size: 100%;
 `
 
 export default ({ data }) => {
@@ -38,22 +49,16 @@ export default ({ data }) => {
     <Layout title={title}>
       <Summary>
         <Content>
-          <h1>Welcome to William Lindner's website.</h1>
-          <h2>A place to share my thoughts.</h2>
+          <Title>Welcome to William's website.</Title>
+          <SubTitle>A place to share my thoughts.</SubTitle>
           <p>
             I live in <Link to="/moving-to-san-francisco">San Francisco</Link>.
-          </p>
-          <p>
             I really enjoy{' '}
-            <Link to="/holotropic-breathwork">Holotropic Breathwork</Link>.
-          </p>
-          <p>
+            <Link to="/holotropic-breathwork">Holotropic Breathwork</Link>,
+            Improv, and <Link to="/lessons-leared-kickboxing">Kickboxing</Link>.
             I do software consulting at{' '}
             <Link to="/my-first-two-years-at-pivotal">VMware Pivotal Labs</Link>
-            .
-          </p>
-          <p>
-            One time I <Link to="/learning-elixir">learned Elixir</Link>.
+            . One time I <Link to="/learning-elixir">learned Elixir</Link>.
           </p>
           <p>
             I sometimes write code on{' '}
@@ -65,11 +70,10 @@ export default ({ data }) => {
           <p>
             Check out my <Link to="/essays">essays</Link>.
           </p>
-          <p>
+          <p style={{ color: '#366ddc' }}>
             <a href="#" onClick={handleOpen}>
-              Send me a message
-            </a>{' '}
-            if you want to contact me about something.
+              Tell me what you think
+            </a>
           </p>
         </Content>
         <iframe
@@ -80,7 +84,6 @@ export default ({ data }) => {
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         />
       </Summary>
-      <Codepen hash="IKGJi" user="wlindner" defaultTab="result" />
       <MessageDialog onClose={handleClose} open={dialogOpen} />
     </Layout>
   )

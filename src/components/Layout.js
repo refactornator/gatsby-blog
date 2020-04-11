@@ -27,7 +27,7 @@ const Content = styled.section`
   flex: 1 0 auto;
   margin: 0 auto;
   max-width: ${rhythm(30)};
-  padding: ${rhythm(1.5)} ${rhythm(3 / 4)};
+  padding: ${rhythm(3 / 4)} ${rhythm(1 / 4)};
 `
 
 export default ({ children, title }) => (

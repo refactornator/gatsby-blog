@@ -5,8 +5,6 @@ import GitHubIcon from '@material-ui/icons/GitHub'
 
 import AnimatedShapes from './AnimatedShapes'
 
-import logo from '../images/wl3_logo.png'
-
 const Background = styled.header`
   width: 100%;
   height: 120px;
@@ -14,7 +12,7 @@ const Background = styled.header`
   position: relative;
   align-items: center;
   justify-content: center;
-  background-color: #f3f5f8;
+  background-color: #829fd9;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 
   a {
@@ -34,19 +32,13 @@ const Links = styled.div`
 `
 
 const linkStyle = {
-  color: '#aaa',
-  width: '26%',
+  padding: 8,
+  margin: '0 8px',
+  color: '#00527e',
   maxWidth: '200px',
-  height: '100%',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  textAlign: 'center',
+  backgroundColor: '#ec5252',
 }
-
-const Image = styled.img`
-  margin-bottom: 5px;
-  vertical-align: middle;
-`
 
 class Header extends React.Component {
   constructor(props) {
