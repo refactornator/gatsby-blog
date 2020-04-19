@@ -8,7 +8,8 @@ import AnimatedShapes from './AnimatedShapes'
 const Background = styled.header`
   top: 0;
   width: 100%;
-  height: 120px;
+  height: ${({ height }) => height || 120}px;
+  transition: height 0.5s ease;
   display: flex;
   position: fixed;
   align-items: center;
@@ -58,10 +59,12 @@ class Header extends React.Component {
   }
 
   render() {
+    const { height } = this.props
     const { animate } = this.state
 
     return (
       <Background
+        height={height}
         onMouseOver={() => this.setState({ animate: true })}
         onMouseOut={() => this.setState({ animate: false })}
       >

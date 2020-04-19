@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
 import styled, { createGlobalStyle } from 'styled-components'
 
@@ -33,16 +33,31 @@ const Content = styled.section`
   padding: ${rhythm(3 / 4)} ${rhythm(1 / 4)};
 `
 
-export default ({ children, title }) => (
-  <React.Fragment>
-    <GlobalStyle />
-    <Main>
-      <Helmet title={title}>
-        <meta name="description" content="William Lindner's Blog" />
-      </Helmet>
-      <Header />
-      <Content>{children}</Content>
-      <Footer />
-    </Main>
-  </React.Fragment>
-)
+export default ({ children, title }) => {
+  const [scrolled, setScrolled] = useState(false)
+
+  const handleScroll = () => {
+    setScrolled(window.scrollY > 40)
+  }
+
+  useEffect(() => {
+    addEventListener('scroll', handleScroll)
+    return () => {
+      removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  return (
+    <React.Fragment>
+      <GlobalStyle />
+      <Main>
+        <Helmet title={title}>
+          <meta name="description" content="William Lindner's Blog" />
+        </Helmet>
+        <Header height={scrolled ? 60 : 120} />
+        <Content>{children}</Content>
+        <Footer />
+      </Main>
+    </React.Fragment>
+  )
+}
