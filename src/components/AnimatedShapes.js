@@ -15,14 +15,15 @@ const Svg = styled.svg`
   line,
   path {
     fill: none;
-    stroke: white;
+    stroke: #ced1d6;
   }
 
   @media (min-width: 400px) {
     circle,
     line,
     path {
-      animation-play-state: ${props => (props.animate ? 'running' : 'paused')};
+      animation-play-state: ${(props) =>
+        props.animate ? 'running' : 'paused'};
     }
   }
 
@@ -37,31 +38,32 @@ const Svg = styled.svg`
 
 const AnimatedCircle = styled.circle`
   stroke-width: 2px;
-  transform-origin: ${props => props.cx}px ${props => props.cy}px;
-  animation: ${growShrink} ${props => props.duration}ms ${easings.inOutQuart}
+  transform-origin: ${(props) => props.cx}px ${(props) => props.cy}px;
+  animation: ${growShrink} ${(props) => props.duration}ms ${easings.inOutQuart}
     infinite;
 `
 
 const AnimatedStepPath = styled.path`
   stroke-width: 2px;
   stroke-linecap: round;
-  stroke-dasharray: ${props => props.dashArray};
-  stroke-dashoffset: ${props => props.dashArray * 0.75};
-  animation: ${lineCrawl} ${props => props.duration}ms linear infinite;
+  stroke-dasharray: ${(props) => props.dashArray};
+  stroke-dashoffset: ${(props) => props.dashArray * 0.75};
+  animation: ${lineCrawl} ${(props) => props.duration}ms linear infinite;
 `
 
 const AnimatedSquigglyPath = styled.path`
   stroke-width: 2px;
   stroke-linecap: round;
-  stroke-dasharray: ${props => props.dashArray};
-  animation: ${lineDisappear} ${props => props.duration}ms ${easings.inOutQuart}
-    infinite;
+  stroke-dasharray: ${(props) => props.dashArray};
+  animation: ${lineDisappear} ${(props) => props.duration}ms
+    ${easings.inOutQuart} infinite;
 `
 
 const CrossLine = styled.line`
   stroke-width: 3px;
-  animation: ${spin} ${props => props.duration}ms ease-in-out infinite;
-  transform-origin: ${props => props.size / 2}px ${props => props.size / 2}px;
+  animation: ${spin} ${(props) => props.duration}ms ease-in-out infinite;
+  transform-origin: ${(props) => props.size / 2}px
+    ${(props) => props.size / 2}px;
 `
 
 const AnimatedCross = ({ x, y, size, duration }) => {
@@ -105,8 +107,8 @@ function constructSquigglyPath(xOffset, yOffset, width, height) {
   const curveWidth = 20
   const path = []
   for (let i = 0; i <= width; i++) {
-    let angle = i / curveWidth * Math.PI * 2 // angle = 0 -> 2π
-    let x = angle * curveWidth / (Math.PI * 2)
+    let angle = (i / curveWidth) * Math.PI * 2 // angle = 0 -> 2π
+    let x = (angle * curveWidth) / (Math.PI * 2)
     let y = Math.sin(angle) * (height / 2) + height / 2
     x += xOffset
     y += yOffset
@@ -143,14 +145,14 @@ class AnimatedShapes extends Component {
               duration={3500}
             />
             <AnimatedSquigglyPath
-              d={constructSquigglyPath(120, 110, 120, 20)}
+              d={constructSquigglyPath(160, 100, 120, 20)}
               dashArray={20}
               duration={4000}
             />
-            <AnimatedCross size={12} x={210} y={10} duration={2500} />
-            <AnimatedCross size={20} x={130} y={16} duration={1500} />
-            <AnimatedCross size={16} x={80} y={90} duration={2000} />
-            <AnimatedCross size={14} x={16} y={50} duration={2500} />
+            <AnimatedCross size={12} x={210} y={10} duration={5000} />
+            <AnimatedCross size={20} x={130} y={16} duration={4500} />
+            <AnimatedCross size={16} x={80} y={90} duration={5500} />
+            <AnimatedCross size={14} x={16} y={50} duration={5000} />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#shapes)" />

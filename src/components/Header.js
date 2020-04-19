@@ -6,10 +6,11 @@ import GitHubIcon from '@material-ui/icons/GitHub'
 import AnimatedShapes from './AnimatedShapes'
 
 const Background = styled.header`
+  top: 0;
   width: 100%;
   height: 120px;
   display: flex;
-  position: relative;
+  position: fixed;
   align-items: center;
   justify-content: center;
   background-color: #829fd9;
@@ -31,13 +32,20 @@ const Links = styled.div`
   background-color: transparent;
 `
 
+const MenuItem = styled.h1`
+  margin: auto;
+  padding: 2px 6px;
+  text-align: center;
+`
+
 const linkStyle = {
-  padding: 8,
-  margin: '0 8px',
-  color: '#00527e',
-  maxWidth: '200px',
-  textAlign: 'center',
-  backgroundColor: '#ec5252',
+  fontSize: 22,
+  color: 'white',
+  margin: '0 16px',
+  minWidth: '48px',
+  minHeight: '48px',
+  fontWeight: 'bolder',
+  backgroundColor: '#f99645',
 }
 
 class Header extends React.Component {
@@ -58,15 +66,25 @@ class Header extends React.Component {
         onMouseOut={() => this.setState({ animate: false })}
       >
         <Links>
-          <Link style={{ ...linkStyle, justifyContent: 'flex-start' }} to={'/'}>
-            Home
+          <Link
+            style={{
+              ...linkStyle,
+            }}
+            to={'/'}
+          >
+            <MenuItem>Home</MenuItem>
           </Link>
           <a
             target="_blank"
-            style={{ ...linkStyle, justifyContent: 'flex-end' }}
+            style={{
+              ...linkStyle,
+              borderRadius: '50%',
+            }}
             href="https://github.com/wlindner"
           >
-            <GitHubIcon fontSize="large" />
+            <MenuItem>
+              <GitHubIcon fontSize="medium" />
+            </MenuItem>
           </a>
         </Links>
         <AnimatedShapes animate={animate} />
