@@ -77,7 +77,7 @@ export default ({ data }) => {
           </p>
         </Content>
         <iframe
-          width="270"
+          width="265"
           height="470"
           src="https://www.youtube-nocookie.com/embed/D4O-JSXoUL8?modestbranding=1&controls=0&playsinline=1&loop=1&playlist=D4O-JSXoUL8&autoplay=1"
           frameBorder="0"
