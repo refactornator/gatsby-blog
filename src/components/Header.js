@@ -83,7 +83,7 @@ class Header extends React.Component {
             href="https://github.com/wlindner"
           >
             <MenuItem>
-              <GitHubIcon fontSize="medium" />
+              <GitHubIcon fontSize="default" />
             </MenuItem>
           </a>
         </Links>
