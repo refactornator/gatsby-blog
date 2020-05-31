@@ -41,11 +41,11 @@ export async function handler(event, context) {
         response.orderedItems = thoughtRecords.data.map(record => {
           return {
             '@context': 'https://www.w3.org/ns/activitystreams',
-            id: 'http://localhost/s/5ed33e3040a0c082dab8f9c7',
+            id: `https://william.cool/newThought/${record.ref.id}`,
             type: 'Create',
             actor: 'https://william.cool/actor',
             object: {
-              id: 'https://william.cool/hello-world',
+              id: `https://william.cool/thought/${record.ref.id}`,
               type: 'Note',
               content: record.data.text,
               published: new Date(record.ts / 1000).toISOString(),
