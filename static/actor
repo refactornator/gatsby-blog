@@ -5,9 +5,12 @@
 	],
 
 	"id": "https://william.cool/actor",
+	"name": "William L. Lindner, III",
 	"type": "Person",
 	"preferredUsername": "william",
-	"inbox": "https://william.cool/inbox",
+	"summary": "Atheist Pastor's Kid living in San Francisco. I spend most of my time writing code, meditating, kickboxing, practicing improv and going to comedy shows with my partner, Ahran Lee.",
+	"inbox": "https://william.cool/.netlify/functions/messages",
+	"outbox": "https://william.cool/.netlify/functions/outbox",
 
 	"publicKey": {
 		"id": "https://william.cool/actor#main-key",
