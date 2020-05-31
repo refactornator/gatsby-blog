@@ -40,7 +40,6 @@ export async function handler(event, context) {
 
         response.orderedItems = thoughtRecords.data.map(record => {
           return {
-            '@context': 'https://www.w3.org/ns/activitystreams',
             id: `https://william.cool/newThought/${record.ref.id}`,
             type: 'Create',
             actor: 'https://william.cool/actor',
@@ -52,6 +51,7 @@ export async function handler(event, context) {
               attributedTo: 'https://william.cool/actor',
               to: 'https://www.w3.org/ns/activitystreams#Public',
             },
+            to: 'https://www.w3.org/ns/activitystreams#Public',
           }
         })
         response.totalItems = response.orderedItems.length
