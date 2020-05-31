@@ -8,3 +8,8 @@
   to = "/react-in-your-react-native-webview-so-you-can-react-while-you-react/"
   status = 200
   force = true
+
+[[headers]]
+  for = "/.well-known/webfinger"
+  [headers.values]
+    Content-Type = "application/json"
