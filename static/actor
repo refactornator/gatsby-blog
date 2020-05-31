@@ -1,0 +1,17 @@
+{
+	"@context": [
+		"https://www.w3.org/ns/activitystreams",
+		"https://w3id.org/security/v1"
+	],
+
+	"id": "https://william.cool/actor",
+	"type": "Person",
+	"preferredUsername": "william",
+	"inbox": "https://william.cool/inbox",
+
+	"publicKey": {
+		"id": "https://william.cool/actor#main-key",
+		"owner": "https://william.cool/actor",
+		"publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4sPQrBfdWQwbvwz1mnZ5\nNnK7HZAg/B5qDxei4xUd2fPi9/Fpwu/mF+FbfFAdaQgelxwGeFo4s6yqoysDSA8R\nRZ5Z5NLFrUP2IqzPxxqDU7BhgVHR+dWQcIOuNXH8zdt5ESQyZiUAc10PO3yp/jWO\nTA0RjBzct5PqFE0UPbQv+s83ZQ6ZPCQNtEat4YfRWKhagOp6NxKJV4haglRBd7nW\nV8APng4SB97ElOlW2rFDCibO+XRFPKOo8WNtSx5Nq3eEDrtpCkBYlUsPBDmzSeKp\nmlVDZgnYEwPgEMU6KHAviuuwVh4UTuqvYNZt4v3MqrgHjYHxhAgvgzFkU7doGbxN\nRQIDAQAB\n-----END PUBLIC KEY-----"
+	}
+}

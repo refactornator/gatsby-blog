@@ -1,0 +1,10 @@
+{
+	"subject": "acct:william@william.cool",
+	"links": [
+		{
+			"rel": "self",
+			"type": "application/activity+json",
+			"href": "https://william.cool/actor"
+		}
+	]
+}
