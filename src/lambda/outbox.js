@@ -40,17 +40,10 @@ export async function handler(event, context) {
 
         response.orderedItems = thoughtRecords.data.map(record => {
           return {
-            id: `https://william.cool/newThought/${record.ref.id}`,
-            type: 'Create',
-            actor: 'https://william.cool/actor',
-            object: {
-              id: `https://william.cool/thought/${record.ref.id}`,
-              type: 'Note',
-              content: record.data.text,
-              published: new Date(record.ts / 1000).toISOString(),
-              attributedTo: 'https://william.cool/actor',
-              to: 'https://www.w3.org/ns/activitystreams#Public',
-            },
+            type: 'Note',
+            content: record.data.text,
+            published: new Date(record.ts / 1000).toISOString(),
+            attributedTo: 'https://william.cool/actor',
             to: 'https://www.w3.org/ns/activitystreams#Public',
           }
         })
