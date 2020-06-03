@@ -32,6 +32,7 @@ export async function handler(event, context) {
 
         const response = {
           '@context': 'https://www.w3.org/ns/activitystreams',
+          id: 'https://william.cool/.netlify/functions/outbox',
           summary: "William's thoughts",
           type: 'OrderedCollection',
           totalItems: 0,
@@ -40,11 +41,19 @@ export async function handler(event, context) {
 
         response.orderedItems = thoughtRecords.data.map(record => {
           return {
-            type: 'Note',
-            content: record.data.text,
+            id: `https://william.cool/newThought/${record.ref.id}`,
+            type: 'Create',
+            actor: 'https://william.cool/actor',
             published: new Date(record.ts / 1000).toISOString(),
-            attributedTo: 'https://william.cool/actor',
-            to: 'https://www.w3.org/ns/activitystreams#Public',
+            to: ['https://www.w3.org/ns/activitystreams#Public'],
+            object: {
+              id: `https://william.cool/.netlify/functions/thought?id=${record.ref.id}`,
+              type: 'Note',
+              content: record.data.text,
+              published: new Date(record.ts / 1000).toISOString(),
+              attributedTo: 'https://william.cool/actor',
+              to: ['https://www.w3.org/ns/activitystreams#Public'],
+            },
           }
         })
         response.totalItems = response.orderedItems.length
