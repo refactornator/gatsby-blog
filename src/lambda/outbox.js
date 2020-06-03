@@ -23,40 +23,57 @@ export async function handler(event, context) {
   switch (event.httpMethod) {
     case 'GET':
       try {
-        const thoughtRecords = await dbClient.query(
-          q.Map(
-            q.Paginate(q.Match(q.Index('all_thoughts'))),
-            q.Lambda('x', q.Get(q.Var('x')))
+        const { page } = event.queryStringParameters
+        let response
+
+        if (page === 'true') {
+          const thoughtRecords = await dbClient.query(
+            q.Map(
+              q.Paginate(q.Match(q.Index('all_thoughts'))),
+              q.Lambda('x', q.Get(q.Var('x')))
+            )
           )
-        )
 
-        const response = {
-          '@context': 'https://www.w3.org/ns/activitystreams',
-          id: 'https://william.cool/.netlify/functions/outbox',
-          summary: "William's thoughts",
-          type: 'OrderedCollection',
-          totalItems: 0,
-          orderedItems: [],
-        }
-
-        response.orderedItems = thoughtRecords.data.map(record => {
-          return {
-            id: `https://william.cool/newThought/${record.ref.id}`,
-            type: 'Create',
-            actor: 'https://william.cool/actor',
-            published: new Date(record.ts / 1000).toISOString(),
-            to: ['https://www.w3.org/ns/activitystreams#Public'],
-            object: {
-              id: `https://william.cool/.netlify/functions/thought?id=${record.ref.id}`,
-              type: 'Note',
-              content: record.data.text,
-              published: new Date(record.ts / 1000).toISOString(),
-              attributedTo: 'https://william.cool/actor',
-              to: ['https://www.w3.org/ns/activitystreams#Public'],
-            },
+          response = {
+            '@context': 'https://www.w3.org/ns/activitystreams',
+            id: 'https://william.cool/.netlify/functions/outbox?page=true',
+            type: 'OrderedCollectionPage',
+            partOf: 'https://william.cool/.netlify/functions/outbox',
+            totalItems: 0,
+            orderedItems: [],
           }
-        })
-        response.totalItems = response.orderedItems.length
+
+          response.orderedItems = thoughtRecords.data.map(record => {
+            return {
+              id: `https://william.cool/newThought/${record.ref.id}`,
+              type: 'Create',
+              actor: 'https://william.cool/actor',
+              published: new Date(record.ts / 1000).toISOString(),
+              to: ['https://www.w3.org/ns/activitystreams#Public'],
+              object: {
+                id: `https://william.cool/.netlify/functions/thought?id=${record.ref.id}`,
+                type: 'Note',
+                content: record.data.text,
+                published: new Date(record.ts / 1000).toISOString(),
+                attributedTo: 'https://william.cool/actor',
+                to: ['https://www.w3.org/ns/activitystreams#Public'],
+              },
+            }
+          })
+          response.totalItems = response.orderedItems.length
+        } else {
+          const totalItems = await dbClient.query(
+            q.Count(q.Match(q.Index('all_thoughts')))
+          )
+
+          response = {
+            '@context': 'https://www.w3.org/ns/activitystreams',
+            id: 'https://william.cool/.netlify/functions/outbox',
+            type: 'OrderedCollection',
+            totalItems,
+            first: 'https://william.cool/.netlify/functions/outbox?page=true',
+          }
+        }
 
         console.log('success', response)
         return {
