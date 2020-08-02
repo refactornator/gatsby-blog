@@ -7,7 +7,7 @@ const adminClient = new faunadb.Client({
 
 // For more info, check https://www.netlify.com/docs/functions/#javascript-lambda-functions
 export async function handler(event, context) {
-  console.log(`event.body: ${event.body}`)
+  console.log(`event: ${JSON.stringify(event)}`)
 
   const { secret } = await adminClient.query(
     q.CreateKey({
