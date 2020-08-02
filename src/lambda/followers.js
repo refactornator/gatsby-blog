@@ -18,8 +18,8 @@ export async function handler(event, context) {
           ],
           partOf: 'https://william.cool/.netlify/functions/followers',
           first: 'https://william.cool/.netlify/functions/followers?page=0',
-          totalItems: 1,
-          orderedItems: ['https://fosstodon.org/users/wlindner'],
+          totalItems: 0,
+          orderedItems: [],
         }
 
         console.log('success', response)
