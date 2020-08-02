@@ -12,8 +12,8 @@ export async function handler(event, context) {
           ],
           partOf: 'https://william.cool/.netlify/functions/followers',
           first: 'https://william.cool/.netlify/functions/followers?page=0',
-          totalItems: 0,
-          orderedItems: [],
+          totalItems: 1,
+          orderedItems: ['https://fosstodon.org/users/wlindner'],
         }
 
         console.log('success', response)
