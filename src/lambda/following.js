@@ -16,10 +16,10 @@ export async function handler(event, context) {
               value: 'schema:value',
             },
           ],
-          partOf: 'https://william.cool/.netlify/functions/followers',
-          first: 'https://william.cool/.netlify/functions/followers?page=0',
-          totalItems: 1,
-          orderedItems: ['https://fosstodon.org/users/wlindner'],
+          partOf: 'https://william.cool/.netlify/functions/following',
+          first: 'https://william.cool/.netlify/functions/following?page=0',
+          totalItems: 0,
+          orderedItems: [],
         }
 
         console.log('success', response)
