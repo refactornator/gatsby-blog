@@ -10,8 +10,9 @@
 	"url": "https://william.cool",
 	"preferredUsername": "william",
 	"summary": "Atheist Pastor's Kid living in San Francisco. I spend most of my time writing code, meditating, kickboxing, practicing improv and going to comedy shows with my partner, Ahran Lee.",
-	"inbox": "https://william.cool/.netlify/functions/messages",
+	"inbox": "https://william.cool/.netlify/functions/inbox",
 	"outbox": "https://william.cool/.netlify/functions/outbox",
+	"followers": "https://william.cool/.netlify/functions/followers",
 
 	"publicKey": {
 		"id": "https://william.cool/actor#main-key",
