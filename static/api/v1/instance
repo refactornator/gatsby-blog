@@ -1,0 +1,27 @@
+{
+  "uri": "william.cool",
+  "title": "William Lindner's Blog",
+  "short_description": "William Lindner's Blog",
+  "description": "William Lindner's Blog",
+  "email": "wlindner522@gmail.com",
+  "version": "0.1",
+  "stats": {
+    "user_count": 1
+  },
+  "languages": [
+    "en"
+  ],
+  "registrations": false,
+  "approval_required": false,
+  "contact_account": {
+    "id": "1",
+    "username": "william",
+    "acct": "william",
+    "display_name": "William",
+    "locked": false,
+    "bot": false,
+    "url": "https://william.cool/actor",
+    "emojis": [],
+    "fields": []
+  }
+}
