@@ -22,6 +22,18 @@ export async function handler (event, context) {
   })
 
   switch (event.httpMethod) {
+    case 'OPTIONS':
+      // To enable CORS
+      const headers = {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET'
+      };
+      return {
+        statusCode: 200,
+        headers,
+        body: 'preflight'
+      };
     case 'GET':
       try {
         const response = await dbClient
