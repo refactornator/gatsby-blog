@@ -6,16 +6,15 @@ const adminClient = new faunadb.Client({
 })
 
 // For more info, check https://www.netlify.com/docs/functions/#javascript-lambda-functions
-export async function handler (event, context) {
+export async function handler(event, context) {
   console.log(`event.body: ${event.body}`)
 
-  const { secret } = await adminClient
-    .query(
-      q.CreateKey({
-        database: q.Database('blog'),
-        role: 'server',
-      })
-    )
+  const { secret } = await adminClient.query(
+    q.CreateKey({
+      database: q.Database('blog'),
+      role: 'server',
+    })
+  )
 
   const dbClient = new faunadb.Client({
     secret,
@@ -24,12 +23,19 @@ export async function handler (event, context) {
   switch (event.httpMethod) {
     case 'GET':
       try {
-        const response = await dbClient
-          .query(q.Map(q.Paginate(q.Match(q.Index('all_thoughts'))), q.Lambda('x', q.Get(q.Var('x')))))
+        const response = await dbClient.query(
+          q.Map(
+            q.Paginate(q.Match(q.Index('all_thoughts'))),
+            q.Lambda('x', q.Get(q.Var('x')))
+          )
+        )
 
         console.log('success', response)
         return {
           statusCode: 200,
+          headers: {
+            'Content-Type': 'application/json',
+          },
           body: JSON.stringify(response),
         }
       } catch (error) {
@@ -41,12 +47,11 @@ export async function handler (event, context) {
       }
     case 'POST':
       try {
-        const response = await dbClient
-          .query(
-            q.Create(q.Collection('thoughts'), {
-              data: { text: event.body },
-            })
-          )
+        const response = await dbClient.query(
+          q.Create(q.Collection('thoughts'), {
+            data: { text: event.body },
+          })
+        )
 
         console.log('success', response)
         return {
