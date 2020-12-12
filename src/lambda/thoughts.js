@@ -23,20 +23,29 @@ export async function handler(event, context) {
   switch (event.httpMethod) {
     case 'GET':
       try {
-        const response = await dbClient.query(
+        const results = await dbClient.query(
           q.Map(
             q.Paginate(q.Match(q.Index('all_thoughts'))),
             q.Lambda('x', q.Get(q.Var('x')))
           )
         )
 
+        const response = results.data.map(result => {
+          return {
+            id: result.ref.id,
+            ts: result.ts,
+            text: result.data.text,
+          }
+        })
+
         console.log('success', response)
         return {
           statusCode: 200,
           headers: {
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
           },
-          body: JSON.stringify(response),
+          body: JSON.stringify({data: response}),
         }
       } catch (error) {
         console.log('error', error)

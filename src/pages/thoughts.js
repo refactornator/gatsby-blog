@@ -10,13 +10,7 @@ export default () => {
     fetch('/.netlify/functions/thoughts')
       .then(response => response.json())
       .then(json => {
-        setThoughts(
-          json.data.map(item => ({
-            id: item.ref['@ref'].id,
-            ts: item.ts,
-            text: item.data.text,
-          }))
-        )
+        setThoughts(json.data)
       })
       .catch(error => {
         console.log(error)
