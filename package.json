@@ -61,7 +61,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wlindner/gatsby-blog.git"
+    "url": "git+https://github.com/williamdotcool/gatsby-blog.git"
   },
   "scripts": {
     "develop": "gatsby develop",

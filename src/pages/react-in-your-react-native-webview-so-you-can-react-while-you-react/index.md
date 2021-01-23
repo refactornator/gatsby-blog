@@ -7,7 +7,7 @@ React Native is great. Or, at least, it promises to be great. It was just releas
 
 This article is about using DOM based React components within a React Native app. It's kind of a funky idea, but it's not all that hard to pull off. So, I hope it helps generate some new ideas.
 
-If you want to skip to the code, check out the complete repo [here](https://github.com/wlindner/ReactNativeReactWebview).
+If you want to skip to the code, check out the complete repo [here](https://github.com/williamdotcool/ReactNativeReactWebview).
 
 This is what it will look like when we're done.
 <br />
@@ -17,14 +17,14 @@ This is what it will look like when we're done.
 
 1. Set up your React Native project using the [Getting Started Guide](https://facebook.github.io/react-native/docs/getting-started.html). This will mostly consist of installing react-native-cli: ```npm install -g react-native-cli```. Then, initializing your project: ```react-native init AwesomeProject```
 
-2. Copy [this folder called 'web'](https://github.com/wlindner/ReactNativeReactWebview/tree/master/web) of an HTML file and two Javascript files into your Xcode project. It's just a React Hello World that I got from React's [Getting Started Guide](https://facebook.github.io/react/docs/getting-started.html).
+2. Copy [this folder called 'web'](https://github.com/williamdotcool/ReactNativeReactWebview/tree/master/web) of an HTML file and two Javascript files into your Xcode project. It's just a React Hello World that I got from React's [Getting Started Guide](https://facebook.github.io/react/docs/getting-started.html).
 <br />
 <br />
 ![Copy the web folder into your project](./react-native-react-webview-copy-web-folder.gif)
 <br />
 <br />
 
-3. Modify your index.ios.js file to look like [this](https://github.com/wlindner/ReactNativeReactWebview/blob/master/index.ios.js). One of the most important bits is this: ```<WebView url='web/helloworld.html' />```. It tells React Native's ```<WebView>``` component to load the HTML file you moved into the project in step 2.  React Native's webview loads the file using iOS native code without any additional work. It even knows how to load the javascript files included into the page's ```<head>```.
+3. Modify your index.ios.js file to look like [this](https://github.com/williamdotcool/ReactNativeReactWebview/blob/master/index.ios.js). One of the most important bits is this: ```<WebView url='web/helloworld.html' />```. It tells React Native's ```<WebView>``` component to load the HTML file you moved into the project in step 2.  React Native's webview loads the file using iOS native code without any additional work. It even knows how to load the javascript files included into the page's ```<head>```.
 
 4. Now, if you start up your application by running it in XCode, you'll see a web view running your React Hello World application.
 

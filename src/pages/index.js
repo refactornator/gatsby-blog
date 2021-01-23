@@ -62,7 +62,7 @@ export default ({ data }) => {
           </p>
           <p>
             I sometimes write code on{' '}
-            <a target="_blank" href="https://github.com/wlindner">
+            <a target="_blank" href="https://github.com/williamdotcool">
               Github
             </a>
             .

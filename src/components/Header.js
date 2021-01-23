@@ -83,7 +83,7 @@ class Header extends React.Component {
               ...linkStyle,
               borderRadius: '50%',
             }}
-            href="https://github.com/wlindner"
+            href="https://github.com/williamdotcool"
           >
             <MenuItem>
               <GitHubIcon fontSize="default" />

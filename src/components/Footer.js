@@ -48,7 +48,7 @@ export default () => {
           <a href="https://twitter.com/wlindner" target="_blank" rel="noopener">
             <TwitterIcon />
           </a>
-          <a href="https://github.com/wlindner" target="_blank" rel="noopener">
+          <a href="https://github.com/williamdotcool" target="_blank" rel="noopener">
             <GitHubIcon />
           </a>
           <a
