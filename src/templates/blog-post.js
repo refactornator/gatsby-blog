@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
-import { Helmet } from 'react-helmet-async'
+import { Helmet } from 'react-helmet'
 import get from 'lodash/get'
 import styled from 'styled-components'
 

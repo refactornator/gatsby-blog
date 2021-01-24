@@ -1,50 +1,48 @@
-const Promise = require('bluebird')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
-  return new Promise((resolve, reject) => {
-    const blogPost = path.resolve('./src/templates/blog-post.js')
-    resolve(
-      graphql(
-        `
-          query {
-            allMarkdownRemark(
-              sort: { fields: [frontmatter___date], order: DESC }
-              limit: 1000
-            ) {
-              edges {
-                node {
-                  fields {
-                    slug
-                  }
-                }
-              }
+  const blogPost = path.resolve('./src/templates/blog-post.js')
+
+  const result = await graphql(
+   `
+      {
+        allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: ASC }
+          limit: 1000
+        ) {
+          nodes {
+            id
+            fields {
+              slug
             }
           }
-        `
-      ).then(result => {
-        if (result.errors) {
-          console.log(result.errors)
-          reject(result.errors)
         }
+      }
+    `
+  )
 
-        // Create blog posts pages.
-        const posts = result.data.allMarkdownRemark.edges
-        posts.forEach(post => {
-          const { slug } = post.node.fields
-          createPage({
-            path: slug,
-            component: blogPost,
-            context: {
-              slug,
-            },
-          })
-        })
-      })
+  if (result.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your blog posts`,
+      result.errors
     )
+    return
+  }
+
+  // Create blog posts pages.
+  const posts = result.data.allMarkdownRemark.nodes
+  posts.forEach(post => {
+    const { slug } = post.fields
+    createPage({
+      path: slug,
+      component: blogPost,
+      context: {
+        slug,
+      },
+    })
   })
 }
 

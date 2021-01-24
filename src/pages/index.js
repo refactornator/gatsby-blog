@@ -88,7 +88,7 @@ const Index = ({ data }) => {
     </Layout>
   )
 }
-export default Index;
+export default Index
 
 export const pageQuery = graphql`
   query {

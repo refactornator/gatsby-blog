@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Helmet } from 'react-helmet-async'
+import { Helmet } from 'react-helmet'
 import styled, { createGlobalStyle } from 'styled-components'
 
 import { rhythm } from '../utils/typography'
+import { isBrowser } from '../utils/runtime'
 
 import Header from './Header'
 import Footer from './Footer'
@@ -37,7 +38,9 @@ export default ({ children, title }) => {
   const [scrolled, setScrolled] = useState(false)
 
   const handleScroll = () => {
-    setScrolled(window.scrollY > 40)
+    if (isBrowser()) {
+      setScrolled(window.scrollY > 40)
+    }
   }
 
   useEffect(() => {
@@ -48,7 +51,7 @@ export default ({ children, title }) => {
   }, [])
 
   return (
-    <React.Fragment>
+    <>
       <GlobalStyle />
       <Main>
         <Helmet title={title}>
@@ -58,6 +61,6 @@ export default ({ children, title }) => {
         <Content>{children}</Content>
         <Footer />
       </Main>
-    </React.Fragment>
+    </>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled } from '@storybook/theming'
-import { HelmetProvider } from 'react-helmet-async'
+import { HelmetProvider } from 'react-helmet'
 
 import BlogPostTemplate from '../templates/blog-post'
 

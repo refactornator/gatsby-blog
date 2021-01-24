@@ -1,24 +1,12 @@
-const { createProxyMiddleware } = require('http-proxy-middleware')
-
 module.exports = {
+  flags: {
+    DEV_SSR: false,
+  },
   siteMetadata: {
     title: "William Lindner, 2 n's",
     author: 'William Lindner',
     description: 'My personal blog.',
-    siteUrl: 'https://wl3.me/',
-  },
-  // for avoiding CORS while developing Netlify Functions locally
-  // read more: https://www.gatsbyjs.org/docs/api-proxy/#advanced-proxying
-  developMiddleware: (app) => {
-    app.use(
-      '/.netlify/functions/',
-      createProxyMiddleware({
-        target: 'http://localhost:9000',
-        pathRewrite: {
-          '/.netlify/functions/': '',
-        },
-      })
-    )
+    siteUrl: 'https://william.cool/',
   },
   plugins: [
     {
@@ -41,7 +29,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
+              maxWidth: 630,
             },
           },
           {
@@ -87,8 +75,7 @@ module.exports = {
         icon: `src/images/wl3_logo.png`, // This path is relative to the root of the site.
       },
     },
-    `gatsby-plugin-offline`,
-    `gatsby-plugin-react-helmet-async`,
+    `gatsby-plugin-react-helmet`,
     {
       resolve: 'gatsby-plugin-typography',
       options: {
