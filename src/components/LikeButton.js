@@ -78,7 +78,7 @@ const LikeButton = () => {
 
       if (isBrowser()) {
         setLikeCount(likeCount + 1)
-        fetch('/.netlify/functions/likes', {
+        fetch('/api/likes', {
           body: JSON.stringify({}),
           method: 'POST',
         })
