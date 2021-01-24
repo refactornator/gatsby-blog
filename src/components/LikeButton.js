@@ -63,11 +63,9 @@ const LikeButton = () => {
     setLiked(pathLiked)
 
     if (isBrowser()) {
-      fetch('/.netlify/functions/likes')
-        .then(response => {
-          return response.json()
-        })
-        .then(count => {
+      fetch('/api/likes')
+        .then(response => response.json())
+        .then(({ count }) => {
           setLikeCount(count)
           console.log(count)
         })
