@@ -10,6 +10,8 @@ if (secret) {
 }
 
 module.exports = async (req, res) => {
+  console.log('headers: ', req.headers)
+
   if (!client) {
     return res
       .status(500)
