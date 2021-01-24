@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import EssayList from '../components/EssayList'
 
-export default ({ data }) => {
+const Essays = ({ data }) => {
   const { title } = data.site.siteMetadata
   const { edges } = data.allMarkdownRemark
 
@@ -14,6 +14,7 @@ export default ({ data }) => {
     </Layout>
   )
 }
+export default Essays;
 
 export const pageQuery = graphql`
   query {

@@ -33,7 +33,7 @@ const SubTitle = styled.h2`
   font-size: 100%;
 `
 
-export default ({ data }) => {
+const Index = ({ data }) => {
   const { title } = data.site.siteMetadata
   const [dialogOpen, setDialogOpen] = useState(false)
 
@@ -88,6 +88,7 @@ export default ({ data }) => {
     </Layout>
   )
 }
+export default Index;
 
 export const pageQuery = graphql`
   query {

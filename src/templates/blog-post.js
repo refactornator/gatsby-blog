@@ -25,7 +25,7 @@ const Content = styled.div`
   color: black;
 `
 
-export default props => {
+const BlogPost = props => {
   const post = props.data.markdownRemark
   const siteTitle = get(props, 'data.site.siteMetadata.title')
 
@@ -42,6 +42,7 @@ export default props => {
     </Layout>
   )
 }
+export default BlogPost;
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {

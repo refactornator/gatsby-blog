@@ -3,7 +3,7 @@ import Layout from '../components/Layout'
 import ThoughtList from '../components/ThoughtList'
 import { Grid, CircularProgress } from '@material-ui/core'
 
-export default () => {
+const Thoughts = () => {
   const [thoughts, setThoughts] = useState(null)
 
   useEffect(() => {
@@ -29,3 +29,4 @@ export default () => {
     </Layout>
   )
 }
+export default Thoughts;
