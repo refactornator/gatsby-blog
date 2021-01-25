@@ -15,6 +15,10 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     background-color: #f7f7f7;
   }
+
+  #gatsby-focus-wrapper {
+    height: 100%;
+  }
 `
 
 const Main = styled.main`
