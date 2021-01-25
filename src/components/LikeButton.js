@@ -32,7 +32,7 @@ const LikeButton = () => {
           console.log(json)
         })
         .catch(() => {
-          setLikeCount(likeCount - 1)
+          setLikeCount(likeCount)
         })
     }
   }
