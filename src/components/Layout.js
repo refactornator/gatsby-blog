@@ -38,15 +38,17 @@ export default ({ children, title }) => {
   const [scrolled, setScrolled] = useState(false)
 
   const handleScroll = () => {
-    if (isBrowser()) {
-      setScrolled(window.scrollY > 40)
-    }
+    setScrolled(window.scrollY > 40)
   }
 
   useEffect(() => {
-    addEventListener('scroll', handleScroll)
+    if (isBrowser()) {
+      addEventListener('scroll', handleScroll)
+    }
     return () => {
-      removeEventListener('scroll', handleScroll)
+      if (isBrowser()) {
+        removeEventListener('scroll', handleScroll)
+      }
     }
   }, [])
 

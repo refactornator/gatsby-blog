@@ -1,48 +1,19 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { Grid, Button, Card, CardHeader, CardContent } from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 
 import LikeButton from './LikeButton'
-import MessageDialog from './MessageDialog'
 
 const Container = styled.div`
-  margin: auto;
-  max-width: 300px;
+  margin: 50px auto 50px auto;
 `
 
 export default () => {
-  const [dialogOpen, setDialogOpen] = useState(false)
-
-  const handleClickOpen = () => {
-    setDialogOpen(true)
-  }
-
-  const handleClose = () => {
-    setDialogOpen(false)
-  }
-
   return (
     <Container>
-      <Card variant="outlined">
-        <CardHeader
-          subheader="Anonymous Feedback 🤔"
-          style={{ paddingBottom: 8 }}
-        />
-        <CardContent style={{ paddingTop: 0 }}>
-          <Grid container justify="space-between" alignItems="center">
-            <Grid item>
-              <Button variant="contained" onClick={handleClickOpen}>
-                Send message
-              </Button>
-            </Grid>
-            <Grid item>
-              <LikeButton />
-            </Grid>
-          </Grid>
-        </CardContent>
-
-        <MessageDialog onClose={handleClose} open={dialogOpen} />
-      </Card>
+      <Grid container justify="flex-end">
+        <LikeButton />
+      </Grid>
     </Container>
   )
 }
