@@ -20,7 +20,7 @@ export default ({ onClose: handleClose, open }) => {
   const submitMessage = () => {
     console.log('submitting')
     setSubmitting(true)
-    fetch('/.netlify/functions/messages', {
+    fetch('/api/messages', {
       body: value,
       method: 'POST',
     })
