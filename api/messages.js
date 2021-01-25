@@ -3,7 +3,7 @@ import axios from 'axios'
 import faunadb, { query as q } from 'faunadb'
 
 const getLocationData = async ipAddress => {
-  if (ipAddress) {
+  if (ipAddress && ipAddress !== '::1') {
     const response = await axios.get(`https://ipapi.co/${ipAddress}/json/`)
     const {
       data: { city, region, country },

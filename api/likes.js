@@ -3,7 +3,8 @@ import axios from 'axios'
 import faunadb, { query as q } from 'faunadb'
 
 const getLocationData = async ipAddress => {
-  if (ipAddress) {
+  if (ipAddress && ipAddress !== '::1') {
+    console.log('ipAddress: ', ipAddress)
     const response = await axios.get(`https://ipapi.co/${ipAddress}/json/`)
     const {
       data: { city, region, country },
@@ -31,10 +32,11 @@ module.exports = async (req, res) => {
       .json({ error: new Error('Missing secret to connect to FaunaDB') })
   }
 
-  const { host, pathname } = url.parse(req.headers.referer)
+  let { host, pathname } = url.parse(req.headers.referer)
 
   console.log('host: ', host)
   console.log('pathname: ', pathname)
+  pathname = pathname.replace(/\/$/g, '')
 
   switch (req.method) {
     case 'GET':
